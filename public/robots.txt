@@ -1,0 +1,3 @@
+sitemap: https://www.diamondeaglesusa.com/sitemap.xml
+user-agent: *
+allow: /
