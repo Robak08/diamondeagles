@@ -1,3 +1,8 @@
+---
+import "../assets/app.css";
+import ThemeToggle from "../components/ThemeToggle.svelte";
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -14,8 +19,27 @@
 
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
+
+		<script is:inline>
+			import { theme } from "../assets/_stores";
+			if (localStorage.getItem("theme") === null) {
+				document.documentElement.setAttribute("data-theme", "light");
+				theme.set("light");
+			} else {
+				document.documentElement.setAttribute(
+					"data-theme",
+					localStorage.getItem("theme")
+				);
+				theme.set(localStorage.getItem("theme"));
+			}
+		</script>
+		<!-- <script>
+			import { themeChange } from "theme-change";
+			themeChange();
+		</script> -->
 	</head>
 	<body>
+		<ThemeToggle client:only="svelte" />
 		<slot />
 	</body>
 </html>
@@ -23,6 +47,7 @@
 <style>
 	html,
 	body {
+		z-index: 1;
 		margin: 0;
 		width: 100%;
 		height: 100%;
