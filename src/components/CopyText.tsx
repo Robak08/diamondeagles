@@ -1,7 +1,7 @@
 
 import { theme } from "@lib/_stores";
 
-const CopyText = ({ text }) => {
+export function CopyText({ text }) {
   	const copyText = () => {
 		if (!text || !navigator) return;
 		navigator.clipboard.writeText(text);
@@ -14,11 +14,11 @@ const CopyText = ({ text }) => {
  
   return (
 	<button
-	className="cursor-pointer"
-	title={text}
-	aria-label="Copy {text}"
-	onClick={copyText}
->
+		className="cursor-pointer"
+		title={text}
+		aria-label="Copy {text}"
+		onClick={copyText}
+	>
 	<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-4 h-4"
 		><path
 			stroke="currentColor"
@@ -31,8 +31,6 @@ const CopyText = ({ text }) => {
 			d="M15 15H20.5C21.3285 15 22 14.3284 22 13.5L22 3.50002C22 2.6716 21.3284 2.00003 20.5 2.00002L10.5 2C9.67158 2 9 2.67158 9 3.50001L9.00001 9"
 		></path></svg
 	>
-</button>
-  );
+	</button>
+  )
 };
- 
-export default CopyText;

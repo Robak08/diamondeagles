@@ -60,7 +60,7 @@
 		@apply mx-1;
 	}
 	ul {
-		@apply bg-base-100 rounded-t-none p-2 text-xs w-full;
+		@apply rounded-t-none p-2 text-xs w-full;
 		li a {
 			@apply px-1 justify-center;
 		}

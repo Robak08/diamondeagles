@@ -1,0 +1,65 @@
+---
+import Layout from "@layouts/Layout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import PageContent from "@components/PageContent.astro";
+// import CopyText from "@components/CopyText.tsx";
+
+const metaTitle = "Privacy Policy | Diamond Eagles USA";
+const metaDescription = "";
+const metaKeywords = "";
+---
+
+<Layout {metaTitle}>
+	<PageHeader title="Privacy Policy" />
+	<PageContent>
+		<div class="flex-1 prose-sm md:prose lg:prose-lg dark:prose-invert">
+			Privacy Policy CONTENT
+		</div>
+	</PageContent>
+</Layout>
+
+<style lang="postcss">
+	@reference '@styles/app.css';
+    section {
+        @apply text-justify;
+    }
+    h3 {
+        @apply text-center;
+    }
+	ol {
+        @apply ml-0 pl-0;
+		counter-reset: item;
+		li {
+			/* margin-bottom: .5em; */
+            @apply list-none pl-4;
+			&:before {
+                @apply inline-block font-[500];
+                @apply w-3 -ml-4 -indent-4;
+                @apply md:w-6 md:-ml-8;
+				content: attr(value) "." counter(item) ".";
+				counter-increment: item;
+			}
+		}
+	}
+    .info-wrap {
+        .info-row {
+            @apply flex flex-row gap-2 md:gap-3 relative;
+            .info-label {
+                /* @apply mr-2; */
+            }
+            .info-content {
+            }
+            .copy {
+                @apply transition-opacity opacity-0;
+                &:hover, &:focus, &:focus-within {
+                    @apply !opacity-100;
+                }
+            }
+            &:hover, &:focus, &:focus-within {
+                > .copy {
+                    @apply opacity-75;
+                }
+            }
+        }
+    }
+</style>

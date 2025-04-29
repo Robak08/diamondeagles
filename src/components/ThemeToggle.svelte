@@ -57,6 +57,13 @@
 
 <style lang="postcss">
 	@reference '@styles/app.css';
+	li:hover,
+	li:focus,
+	li:focus-within {
+		svg {
+			@apply text-primary;
+		}
+	}
 	svg {
 		@apply w-5 h-5;
 	}

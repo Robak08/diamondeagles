@@ -1,28 +1,97 @@
 ---
 import Logo from "./Logo.svelte";
-import ThemeToggle from "./ThemeToggle.svelte";
-import Menu from "./Menu.svelte";
+// import ThemeToggle from "./ThemeToggle.svelte";
+import { ThemeChange } from "@components/ThemeChange";
+// import Menu from "./Menu.svelte";
+import { MenuBar } from "@components/MenuBar.tsx";
+
+const currentPath = Astro.url.pathname;
+
+const links: {
+	label: string;
+	href: string;
+	children?: { label: string; href: string; description?: string }[];
+}[] = [
+	{
+		label: "About Eagles",
+		href: "/about",
+	},
+	{
+		label: "Industries",
+		href: "/industries",
+		children: [
+			{
+				label: "Industry 1",
+				href: "/",
+				description: "Description 1",
+			},
+			{
+				label: "Industry 2",
+				href: "/",
+			},
+			{
+				label: "Industry 3",
+				href: "/",
+			},
+			{
+				label: "Industry 4",
+				href: "/",
+			},
+			{
+				label: "Industry 5",
+				href: "/",
+			},
+			{
+				label: "Industry 6",
+				href: "/",
+				description: "Description 6",
+			},
+			{
+				label: "Industry 7",
+				href: "/",
+			},
+			{
+				label: "Industry 8",
+				href: "/",
+			},
+		],
+	},
+	{
+		label: "Contact",
+		href: "/contact",
+	},
+	{
+		label: "Terms and Conditions",
+		href: "/terms-and-conditions",
+	},
+];
 ---
 
 <div class="navbar">
 	<div class="flex-1">
 		<Logo header />
 	</div>
-	<div class="flex-none">
-		<ul class="menu menu-horizontal">
-			<Menu />
-			<ThemeToggle client:load="svelte" />
-		</ul>
+	<div class="menu-horizontal">
+		<MenuBar client:load {links} {currentPath} />
+
+		<!-- <ul class="menu menu-horizontal"> -->
+		<!-- <Menu /> -->
+		<!-- <ThemeToggle client:load="svelte" /> -->
+		<ThemeChange client:load />
+		<!-- </ul> -->
 	</div>
 </div>
 
 <style lang="postcss">
 	@reference '@styles/app.css';
 	.navbar {
-		@apply w-full bg-base-100 shadow-sm h-[65px];
+		@apply w-full z-10 sticky isolate top-0;
+		@apply shadow-sm;
+		@apply flex flex-row items-center py-2 px-4;
+		@apply dark:bg-black/90 bg-white/90;
 	}
-	.menu.menu-horizontal {
-		@apply flex items-center px-1;
+	.menu-horizontal {
+		@apply flex-none flex flex-row items-center gap-2 z-3;
 		> li {
 			@apply mx-1;
 		}
