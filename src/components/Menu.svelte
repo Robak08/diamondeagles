@@ -55,7 +55,7 @@
 {/each}
 
 <style lang="postcss">
-	@reference '../styles/app.css';
+	@reference '@styles/app.css';
 	.list-item {
 		@apply mx-1;
 	}

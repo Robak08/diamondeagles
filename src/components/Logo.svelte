@@ -29,7 +29,7 @@
 </div>
 
 <style lang="postcss">
-	@reference '../styles/app.css';
+	@reference '@styles/app.css';
 	.delogo {
 		@apply flex items-center w-[fit-content];
 		&.header :global(svg) {

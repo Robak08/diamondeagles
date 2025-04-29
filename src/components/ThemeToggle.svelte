@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import { themeChange } from "theme-change";
-	import { theme } from "../stores/_stores";
+	import { theme } from "@lib/_stores";
 
 	let inputVal = $state(false);
 
@@ -56,7 +56,7 @@
 </li>
 
 <style lang="postcss">
-	@reference '../styles/app.css';
+	@reference '@styles/app.css';
 	svg {
 		@apply w-5 h-5;
 	}

@@ -1,0 +1,16 @@
+---
+const { title } = Astro.props;
+---
+
+<div class="header">
+	<h1>{title}</h1>
+</div>
+
+<style lang="postcss">
+    @reference '@styles/app.css';
+    .header {
+        @apply prose-sm md:prose lg:prose-lg;
+        @apply text-center;
+        @apply flex-none;
+    }
+</style>

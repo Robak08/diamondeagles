@@ -306,7 +306,7 @@
 >
 
 <style lang="postcss">
-	@reference '../styles/app.css';
+	@reference '@styles/app.css';
 	svg {
 		/* @apply w-full h-full; */
 		/* &.footer {

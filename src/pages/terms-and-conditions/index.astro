@@ -1,0 +1,221 @@
+---
+import Layout from "@layouts/Layout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import PageContent from "@components/PageContent.astro";
+// import CopyText from "@components/CopyText.tsx";
+
+const metaTitle = "Terms and Conditions | Diamond Eagles USA";
+const metaDescription = "";
+const metaKeywords = "";
+---
+
+<Layout {metaTitle}>
+	<PageHeader title="Terms and Conditions" />
+	<PageContent>
+		<div class="flex-1 prose-sm md:prose lg:prose-lg">
+			<section>
+				<h3>1. General Provisions</h3>
+				<ol>
+					<li value="1">
+						The Regulations define the rules and conditions of participation in
+						the “Diamond Eagles USA” plebiscite (hereinafter referred to as the
+						“Plebiscite”), organized by <b class="text-error"
+							>[Name of the Organizer]</b
+						>.
+					</li>
+					<li value="1">
+						The purpose of the Plebiscite is to distinguish the best local
+						companies operating in the USA in various industries.
+					</li>
+					<li value="1">
+						Participation in the Plebiscite is tantamount to acceptance of these
+						Regulations.
+					</li>
+				</ol>
+			</section>
+			<section>
+				<h3>2. Conditions of participation</h3>
+				<ol>
+					<li value="2">
+						Only legal entities and organizational units conducting business
+						activities in the USA may participate in the Plebiscite.
+					</li>
+					<li value="2">
+						Each company may apply to the Plebiscite independently or be
+						nominated by customers, employees or business partners.
+					</li>
+					<li value="2">
+						Applications to the Plebiscite must be submitted via the application
+						form available on the website <b class="text-error"
+							>[Website Address]</b
+						>.
+					</li>
+				</ol>
+			</section>
+			<section>
+				<h3>3. Evaluation rules</h3>
+				<ol>
+					<li value="3">
+						The evaluation of companies participating in the Plebiscite is based
+						on customer opinions, quality of services provided, involvement in
+						the local community and other criteria specified by the Organizer.
+					</li>
+					<li value="3">
+						In order to ensure objectivity, the evaluation will be carried out
+						by an independent committee consisting of industry experts.
+					</li>
+					<li value="3">
+						The results of the Plebiscite will be announced on the website
+						<b class="text-error">[Website Address]</b> and in the Organizer's social
+						media.
+					</li>
+				</ol>
+			</section>
+			<section>
+				<h3>4. Categories and prizes</h3>
+				<ol>
+					<li value="4">
+						The Plebiscite includes the following industry categories:
+						Gastronomy, Retail, Health Services, Technology, Education,
+						Entertainment, Financial Services, Transport and Logistics.
+					</li>
+					<li value="4">
+						In each category, a main prize will be awarded as well as
+						distinctions for companies taking subsequent places.
+					</li>
+					<li value="4">
+						The winners of the Plebiscite will receive diplomas and the
+						opportunity to use the Diamond Eagles USA logo in promotional
+						materials.
+					</li>
+				</ol>
+			</section>
+			<section>
+				<h3>5. Obligations of participants</h3>
+				<ol>
+					<li value="5">
+						Participants undertake to provide true and reliable information for
+						the needs of the Plebiscite.
+					</li>
+					<li value="5">
+						Participants agree to the processing of personal data in accordance
+						with the Organizer's privacy policy, available on the website
+						[Website Address].
+					</li>
+					<li value="5">
+						Participants undertake to comply with these Regulations and the
+						decisions of the evaluation committee.
+					</li>
+				</ol>
+			</section>
+			<section>
+				<h3>6. Final provisions</h3>
+				<ol>
+					<li value="6">
+						The Organizer reserves the right to change these Regulations at any
+						time, informing participants about this by publishing the amended
+						Regulations on the Plebiscite website.
+					</li>
+					<li value="6">
+						Any disputes related to the Plebiscite will be resolved by the
+						competent court at the Organizer's registered office.
+					</li>
+					<li value="6">
+						The Regulations enter into force on the date of their announcement
+						on the Plebiscite website.
+					</li>
+				</ol>
+			</section>
+			<section>
+				<h3>7. Contact</h3>
+				<div class="info-wrap">
+					<div class="info-row">
+						<div class="info-label">Email:</div>
+						<div class="info-content tooltip" data-tip="Contact Us">
+							<a
+								href="mailto:plebiscyt@diamondeaglesusa.com"
+								target="_self"
+								title="Contact Us">plebiscyt@diamondeaglesusa.com</a
+							>
+						</div>
+						<span class="copy">
+							<!-- <CopyText text="plebiscyt@diamondeaglesusa.com" client:load /> -->
+						</span>
+					</div>
+					<div class="info-row">
+						<div class="info-label">Phone:</div>
+						<div class="info-content tooltip" data-tip="Call Us">
+							<a href="tel:+1234567890" target="_self" title="Call Us">
+								+1 234 567 890
+							</a>
+						</div>
+						<span class="copy">
+							<!-- <CopyText text="+1 234 567 890" client:load /> -->
+						</span>
+					</div>
+					<div class="info-row">
+						<div class="info-label">Address:</div>
+						<div class="info-content tooltip" data-tip="Find Us">
+							<a
+								href="https://maps.app.goo.gl/gYW6HyZpUEGJUfAd6"
+								title="Find Us"
+								target="_blank"
+								rel="noreferrer nofollower external"
+								>1234 Main St, Anytown, USA</a
+							>
+						</div>
+						<span class="copy">
+							<!-- <CopyText text="1234 Main St, Anytown, USA" client:load /> -->
+						</span>
+					</div>
+				</div>
+			</section>
+		</div>
+	</PageContent>
+</Layout>
+
+<style lang="postcss">
+	@reference '@styles/app.css';
+    section {
+        @apply text-justify;
+    }
+    h3 {
+        @apply text-center;
+    }
+	ol {
+        @apply ml-0 pl-0;
+		counter-reset: item;
+		li {
+			/* margin-bottom: .5em; */
+            @apply list-none pl-4;
+			&:before {
+                @apply inline-block font-[500];
+                @apply w-3 -ml-4 -indent-4;
+                @apply md:w-6 md:-ml-8;
+				content: attr(value) "." counter(item) ".";
+				counter-increment: item;
+			}
+		}
+	}
+    .info-wrap {
+        .info-row {
+            @apply flex flex-row gap-2 md:gap-3 relative;
+            .info-label {
+                /* @apply mr-2; */
+            }
+            .info-content {
+            }
+            .copy {
+                @apply transition-opacity opacity-0;
+                &:hover, &:focus, &:focus-within {
+                    @apply !opacity-100;
+                }
+            }
+            &:hover, &:focus, &:focus-within {
+                > .copy {
+                    @apply opacity-75;
+                }
+            }
+        }
+    }
+</style>
