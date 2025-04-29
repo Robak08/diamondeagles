@@ -14,7 +14,7 @@ export function MenuBar({links, currentPath}:any) {
   const listItems = links.map((link: any, index : number)=> 
     (link?.children ?
       <NavigationMenuItem key={link.href+index} className="mx-1">
-          <NavigationMenuTrigger>{link.label}</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="font-light">{link.label}</NavigationMenuTrigger>
           <NavigationMenuContent>
           <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[1fr_.75fr_.75fr]">
               <li className="row-span-4">
