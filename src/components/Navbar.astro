@@ -85,10 +85,10 @@ const links: {
 <style lang="postcss">
 	@reference '@styles/app.css';
 	.navbar {
-		@apply w-full z-10 sticky isolate top-0;
-		@apply shadow-sm;
+		@apply z-10 sticky isolate top-0;
+		@apply shadow-sm rounded-lg m-4;
 		@apply flex flex-row items-center py-2 px-4;
-		@apply dark:bg-black/90 bg-white/90;
+		@apply dark:bg-zinc-900/80 bg-white/60 backdrop-blur-xs;
 	}
 	.menu-horizontal {
 		@apply flex-none flex flex-row items-center gap-2 z-3;

@@ -2,7 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import PageHeader from "@components/PageHeader.astro";
 import PageContent from "@components/PageContent.astro";
-// import CopyText from "@components/CopyText.tsx";
+import { CopyText } from "@components/CopyText.tsx";
 
 const metaTitle = "Terms and Conditions | Diamond Eagles USA";
 const metaDescription = "";
@@ -12,9 +12,7 @@ const metaKeywords = "";
 <Layout {metaTitle}>
 	<PageHeader title="Terms and Conditions" />
 	<PageContent>
-		<div
-			class="flex-1 prose-sm md:prose  lg:prose-lg dark:prose-invert"
-		>
+		<div class="flex-1 prose-sm md:prose lg:prose-lg dark:prose-invert">
 			<section>
 				<h3>1. General Provisions</h3>
 				<ol>
@@ -141,7 +139,7 @@ const metaKeywords = "";
 							>
 						</div>
 						<span class="copy">
-							<!-- <CopyText text="plebiscyt@diamondeaglesusa.com" client:load /> -->
+							<CopyText text="plebiscyt@diamondeaglesusa.com" client:load />
 						</span>
 					</div>
 					<div class="info-row">
@@ -152,7 +150,7 @@ const metaKeywords = "";
 							</a>
 						</div>
 						<span class="copy">
-							<!-- <CopyText text="+1 234 567 890" client:load /> -->
+							<CopyText text="+1 234 567 890" client:load />
 						</span>
 					</div>
 					<div class="info-row">
@@ -167,7 +165,7 @@ const metaKeywords = "";
 							>
 						</div>
 						<span class="copy">
-							<!-- <CopyText text="1234 Main St, Anytown, USA" client:load /> -->
+							<CopyText text="1234 Main St, Anytown, USA" client:load />
 						</span>
 					</div>
 				</div>
