@@ -2,11 +2,14 @@
 
 ---
 
-<div class="flex-1">
+<div class="content">
 	<slot />
 </div>
 
 <style lang="postcss">
-    /* @reference '@styles/app.css' */
+    @reference '@styles/app.css';
+    .content {
+        @apply flex-1 mt-4 md:mt-6 lg:mt-10;
+    }
 
 </style>

@@ -1,9 +1,9 @@
 ---
 import Logo from "./Logo.svelte";
-// import ThemeToggle from "./ThemeToggle.svelte";
 import { ThemeChange } from "@components/ThemeChange";
-// import Menu from "./Menu.svelte";
 import { MenuBar } from "@components/MenuBar.tsx";
+import FacebookButton from "@components/FacebookButton.astro";
+import InstagramButton from "@components/InstagramButton.astro";
 
 const currentPath = Astro.url.pathname;
 
@@ -23,7 +23,7 @@ const links: {
 			{
 				label: "Industry 1",
 				href: "/",
-				description: "Description 1",
+				description: "Desc 1",
 			},
 			{
 				label: "Industry 2",
@@ -44,7 +44,7 @@ const links: {
 			{
 				label: "Industry 6",
 				href: "/",
-				description: "Description 6",
+				description: "Desc 6",
 			},
 			{
 				label: "Industry 7",
@@ -73,12 +73,9 @@ const links: {
 	</div>
 	<div class="menu-horizontal">
 		<MenuBar client:load {links} {currentPath} />
-
-		<!-- <ul class="menu menu-horizontal"> -->
-		<!-- <Menu /> -->
-		<!-- <ThemeToggle client:load="svelte" /> -->
+		<InstagramButton />
+		<FacebookButton />
 		<ThemeChange client:load />
-		<!-- </ul> -->
 	</div>
 </div>
 

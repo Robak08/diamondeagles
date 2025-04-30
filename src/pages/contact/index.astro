@@ -2,6 +2,9 @@
 import Layout from "@layouts/Layout.astro";
 import PageHeader from "@components/PageHeader.astro";
 import PageContent from "@components/PageContent.astro";
+import { ContactForm } from "@/components/ContactForm";
+import { CopyText } from "@/components/CopyText";
+import { Separator } from "@/components/ui/separator";
 
 const metaTitle = "Contact Eagles | Diamond Eagles USA";
 const metaDescription = "";
@@ -10,5 +13,101 @@ const metaKeywords = "";
 
 <Layout {metaTitle}>
 	<PageHeader title="Contact Eagles" />
-	<PageContent> CONTACT PAGE CONTENT </PageContent>
+	<PageContent>
+		<section class="prose-sm dark:prose-invert md:prose lg:prose-xl">
+			<h3 class="mb-8 md:mb-12 lg:mb-16 2xl:mb-24">
+				Do you have questions or want to join the prestigious group of Diamond
+				Eagles USA plebiscite winners?
+			</h3>
+			<div
+				class="grid grid-cols-1 sm:grid-cols-[1fr_0.75fr] gap-6 sm:gap-x-10 md:gap-x-16 lg:gap-x-20 relative"
+			>
+				<div class="form-wrap">
+					<ContactForm client:load />
+				</div>
+				<Separator className="block sm:hidden gap-y-4" />
+				<Separator
+					orientation="vertical"
+					className="hidden sm:block absolute top-0 left-[56.5%]"
+				/>
+				<div class="info-wrap">
+					<div class="info-title">Contact Us</div>
+					<div class="info-wrap">
+						<div class="info-row">
+							<div class="info-label">Email:</div>
+							<div class="info-content">
+								<a
+									href="mailto:plebiscyt@diamondeaglesusa.com"
+									target="_self"
+									title="Contact Us">plebiscyt@diamondeaglesusa.com</a
+								>
+								<span class="copy">
+									<CopyText text="plebiscyt@diamondeaglesusa.com" client:load />
+								</span>
+							</div>
+						</div>
+						<div class="info-row">
+							<div class="info-label">Phone:</div>
+							<div class="info-content">
+								<a href="tel:+1234567890" target="_self" title="Call Us">
+									+1 234 567 890
+								</a>
+								<span class="copy">
+									<CopyText text="+1 234 567 890" client:load />
+								</span>
+							</div>
+						</div>
+						<div class="info-row">
+							<div class="info-label">Address:</div>
+							<div class="info-content">
+								<a
+									href="https://maps.app.goo.gl/gYW6HyZpUEGJUfAd6"
+									title="Find Us"
+									target="_blank"
+									rel="noreferrer nofollower external"
+									>1234 Main St, Anytown, USA</a
+								>
+								<span class="copy">
+									<CopyText text="1234 Main St, Anytown, USA" client:load />
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</PageContent>
 </Layout>
+
+<style lang="postcss">
+	@reference '@styles/app.css';
+	.info-wrap {
+		@apply text-sm md:text-base;
+		.info-title {
+			@apply text-base md:text-lg;
+			@apply font-medium pt-2 sm:pt-0 pb-4;
+		}
+        .info-row {
+            @apply flex flex-col relative mb-6;
+            .info-label {
+				@apply font-light;
+                /* @apply mr-2; */
+            }
+            .info-content {
+				&:hover, &:focus, &:focus-within {
+					.copy {
+						@apply !opacity-100;
+					}
+				}
+            }
+            .copy {
+                @apply transition-opacity opacity-0;
+            }
+            &:hover, &:focus, &:focus-within {
+                > .copy {
+                    @apply opacity-75;
+                }
+            }
+        }
+    }
+</style>
