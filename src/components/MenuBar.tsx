@@ -22,7 +22,7 @@ export function MenuBar({links, currentPath}:any) {
               <li className="row-span-4">
                 <NavigationMenuLink asChild>
                   <div
-                    className="flex h-full w-full select-none flex-col justify-start rounded-md gap-4 bg-gradient-to-b from-muted/50 to-muted px-4 py-3 no-underline outline-none focus:shadow-md"
+                    className="flex h-full w-full select-none flex-col justify-start rounded-md border border-border/80 gap-4 bg-gradient-to-br from-muted/40 to-muted/60 dark:from-muted-60 dark:to-muted/90 px-4 py-3 no-underline outline-none focus:shadow-md"
                   >
                     <div className="w-full p-2">
                     <svg className="!w-full !h-full fill-current"

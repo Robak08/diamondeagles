@@ -3,16 +3,46 @@ const currentYear: String = new Date().getFullYear().toString();
 
 import FacebookButton from "@components/FacebookButton.astro";
 import InstagramButton from "@components/InstagramButton.astro";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@components/ui/separator";
+
+const footerLinks = [
+	{
+		label: "Terms and Conditions",
+		href: "/terms-and-conditions",
+	},
+	{
+		label: "Privacy Policy",
+		href: "/privacy-policy",
+	},
+];
 ---
 
 <footer>
 	<div class="footer-wrap">
-		<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
+		<span class="footer-copy"
 			>&copy;2023-{currentYear}
 			<span class="font-medium">US Business Ventures LLC</span>. All Rights
 			Reserved.
 		</span>
-		<ul>
+		<Separator orientation="vertical" className="!h-8 hidden md:block" />
+		<Separator className="!w-3/5 mx-auto block md:hidden" />
+		<ul class="footer-menu">
+			{
+				footerLinks.map((link) => (
+					<li>
+						<a href={link.href} title={link.label}>
+							<Button variant="link" >
+								{link.label}
+							</Button>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+		<Separator orientation="vertical" className="!h-8 hidden md:block" />
+		<Separator className="!w-3/5 mx-auto block md:hidden" />
+		<ul class="footer-socials">
 			<li>
 				<InstagramButton />
 			</li>
@@ -29,10 +59,24 @@ import InstagramButton from "@components/InstagramButton.astro";
 		@apply bg-gray-100/80 rounded-lg shadow-sm m-4 dark:bg-zinc-900/75;
 	}
     .footer-wrap {
-        @apply w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between;
+        @apply w-full mx-auto max-w-screen-xl p-4 flex flex-col md:flex-row md:items-center md:justify-between;
+		@apply gap-y-2 md:gap-y-0;
     }
-    ul {
-        @apply flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0;
+	.footer-copy {
+		@apply text-sm text-center md:text-left text-gray-500 dark:text-gray-400 py-2;
+	}
+	.footer-menu {
+		@apply flex flex-wrap items-center justify-center text-sm font-medium mt-0;
+		button {
+			@apply cursor-pointer text-gray-500 dark:text-gray-400;
+			&:hover, &:focus {
+				@apply text-current;
+			}
+		}
+	}
+
+    .footer-socials {
+        @apply flex flex-wrap items-center justify-center md:justify-end text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0;
         @apply gap-2 md:gap-3;
         li {
             @apply flex justify-center ;
