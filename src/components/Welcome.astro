@@ -6,7 +6,7 @@ import background from "../assets/background.svg";
 	<img id="background" src={background.src} alt="" fetchpriority="high" />
 	<main>
 		<section id="hero">
-			<h1>
+			<!-- <h1>
 				To get started, open the <code><pre>src/pages</pre></code> directory in your
 				project.
 			</h1>
@@ -22,12 +22,13 @@ import background from "../assets/background.svg";
 						></path></svg
 					>
 				</a>
-			</section>
+			</section> -->
 		</section>
 	</main>
 </div>
 
-<style>
+<style lang="postcss">
+	@reference '@styles/app.css';
 	#background {
 		position: fixed;
 		top: 0;

@@ -2,6 +2,7 @@ import * as React from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import validator from "validator";
 import { cn } from "@/lib/utils"
 import { Check, ChevronsUpDown } from "lucide-react"
 
@@ -10,13 +11,14 @@ import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-//   FormDescription,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Textarea } from "@/components/ui/textarea"
 import {
     Command,
@@ -32,12 +34,75 @@ import {
     PopoverTrigger,
   } from "@/components/ui/popover"
  
+
+  // CHECK PHONE VALIDATION 
+
+/* TODO CHECKBOX
+  I am a winner and I want to receive promotional materials
+  I want to submit my company to the ranking
+*/
+
+const states = [
+  "Alaska", 
+  "Alabama", 
+  "Arkansas", 
+  "Arizona", 
+  "California", 
+  "Colorado", 
+  "Connecticut", 
+  "District of Columbia",
+  "Delaware", 
+  "Florida", 
+  "Georgia", 
+  "Hawaii", 
+  "Iowa", 
+  "Idaho", 
+  "Illinois", 
+  "Indiana", 
+  "Kansas", 
+  "Kentucky", 
+  "Louisiana", 
+  "Massachusetts", 
+  "Maryland", 
+  "Maine", 
+  "Michigan", 
+  "Minnesota", 
+  "Missouri", 
+  "Mississippi", 
+  "Montana", 
+  "North Carolina",
+  "North Dakota",
+  "Nebraska", 
+  "New Hampshire",
+  "New Jersey",
+  "New Mexico",
+  "Nevada", 
+  "New York",
+  "Ohio", 
+  "Oklahoma", 
+  "Oregon", 
+  "Pennsylvania", 
+  "Rhode Island",
+  "South Carolina",
+  "South Dakota",
+  "Tennessee",
+  "Texas", 
+  "Utah", 
+  "Virginia", 
+  "Vermont", 
+  "Washington", 
+  "Wisconsin", 
+  "West Virginia",
+  "Wyoming"
+] as string[];
+
+
 const formSchema = z.object({
   firstname: z.string().min(3, {
     message: "First name must be at least 3 characters.",
   }),
-  lastname: z.string().min(3, {
-    message: "Last name must be at least 3 characters.",
+  phone: z.string().refine(validator.isMobilePhone, {
+    message: "Phone number is invalid",
   }),
   company: z.string().min(2, {
     message: "Company must be at least 2 characters.",
@@ -45,72 +110,16 @@ const formSchema = z.object({
   city: z.string().min(3, {
     message: "City must be at least 2 characters.",
   }),
-  state: z.string({
-    required_error: "Please select a state.",
+  state: z.enum(states as [string, ...string[]],{
+    message: "Please select a state.",
   }),
+  winner: z.optional(),
+  submit: z.optional(),
   message: z.string().min(3, {
     message: "Message must be at least 3 characters.",
   }),
 })
 
-type State = {
-    label: string
-    value: string
-  }
-
-export const states: State[] = [
-    { label: "Alaska", value: "Alaska" },
-    { label: "Alabama", value: "Alabama" },
-    { label: "Arkansas", value: "Arkansas" },
-    { label: "Arizona", value: "Arizona" },
-    { label: "California", value: "California" },
-    { label: "Colorado", value: "Colorado" },
-    { label: "Connecticut", value: "Connecticut" },
-    { label: "District of Columbia", value: "District of Columbia" },
-    { label: "Delaware", value: "Delaware" },
-    { label: "Florida", value: "Florida" },
-    { label: "Georgia", value: "Georgia" },
-    { label: "Hawaii", value: "Hawaii" },
-    { label: "Iowa", value: "Iowa" },
-    { label: "Idaho", value: "Idaho" },
-    { label: "IL", value: "Illinois" },
-    { label: "Illinois", value: "Indiana" },
-    { label: "Kansas", value: "Kansas" },
-    { label: "Kentucky", value: "Kentucky" },
-    { label: "Louisiana", value: "Louisiana" },
-    { label: "Massachusetts", value: "Massachusetts" },
-    { label: "Maryland", value: "Maryland" },
-    { label: "Maine", value: "Maine" },
-    { label: "Michigan", value: "Michigan" },
-    { label: "Minnesota", value: "Minnesota" },
-    { label: "Missouri", value: "Missouri" },
-    { label: "Mississippi", value: "Mississippi" },
-    { label: "Montana", value: "Montana" },
-    { label: "North Carolina", value: "North Carolina" },
-    { label: "North Dakota", value: "North Dakota" },
-    { label: "Nebraska", value: "Nebraska" },
-    { label: "New Hampshire", value: "New Hampshire" },
-    { label: "New Jersey", value: "New Jersey" },
-    { label: "New Mexico", value: "New Mexico" },
-    { label: "Nevada", value: "Nevada" },
-    { label: "New York", value: "NewYork" },
-    { label: "Ohio", value: "Ohio" },
-    { label: "Oklahoma", value: "Oklahoma" },
-    { label: "Oregon", value: "Oregon" },
-    { label: "Pennsylvania", value: "Pennsylvania" },
-    { label: "Rhode Island", value: "Rhode Island" },
-    { label: "South Carolina", value: "South Carolina" },
-    { label: "South Dakota", value: "South Dakota" },
-    { label: "Tennessee", value: "Tennessee" },
-    { label: "Texas", value: "Texas" },
-    { label: "Utah", value: "Utah" },
-    { label: "Virginia", value: "Virginia" },
-    { label: "Vermont", value: "Vermont" },
-    { label: "Washington", value: "Washington" },
-    { label: "Wisconsin", value: "Wisconsin" },
-    { label: "West Virginia", value: "West Virginia" },
-    { label: "Wyoming", value: "Wyoming" },
-  ];
 // TODO city/state search ?
  
 export function ContactForm() {
@@ -124,10 +133,12 @@ export function ContactForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       firstname: "",
-      lastname: "",
+      phone: "",
       company: "",
       city: "",
       state: "",
+      winner: false,
+      submit: false,
       message: ""
     },
   })
@@ -138,7 +149,7 @@ export function ContactForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-2 gap-x-6 gap-y-9 lg:gap-y-11">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-2 gap-x-6 gap-y-8">
         <FormField
           control={form.control}
           name="firstname"
@@ -154,12 +165,12 @@ export function ContactForm() {
         />
          <FormField
           control={form.control}
-          name="lastname"
+          name="phone"
           render={({ field }) => (
             <FormItem className="relative">
-                <FormLabel className="text-sm sm:text-base">Last name</FormLabel>
+                <FormLabel className="text-sm sm:text-base">Phone</FormLabel>
               <FormControl>
-                <Input placeholder="Your last name" {...field} />
+                <Input placeholder="Enter Your phone" {...field} />
               </FormControl>
               <FormMessage className="absolute top-13 sm:top-14 text-xs sm:text-sm"/>
             </FormItem>
@@ -209,9 +220,7 @@ export function ContactForm() {
                       )}
                     >
                       {field.value
-                        ? states.find(
-                            (language) => language.value === field.value
-                          )?.label
+                        ? states.find((st) => st === field.value)
                         : "Select state"}
                       <ChevronsUpDown className="opacity-50" />
                     </Button>
@@ -228,17 +237,17 @@ export function ContactForm() {
                       <CommandGroup>
                         {states.map((state) => (
                           <CommandItem
-                            value={state.label}
-                            key={state.value}
+                            value={state}
+                            key={state.replaceAll(' ','')}
                             onSelect={() => {
-                              form.setValue("state", state.value)
+                              form.setValue("state", state)
                             }}
                           >
-                            {state.label}
+                            {state}
                             <Check
                               className={cn(
                                 "ml-auto",
-                                state.value === field.value
+                                state === field.value
                                   ? "opacity-100"
                                   : "opacity-0"
                               )}
@@ -251,6 +260,44 @@ export function ContactForm() {
                 </PopoverContent>
               </Popover>
                 <FormMessage className="absolute top-13 sm:top-14 text-xs sm:text-sm"/>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="winner"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0 col-span-2 relative border rounded-md has-checked:bg-violet-50/50 dark:has-checked:bg-violet-950/30 has-checked:border-violet-200 dark:has-checked:border-violet-950/80">
+              <FormLabel className="p-3">
+                <FormControl>
+                  <Checkbox
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+               <div className="ml-2 space-y-1 leading-none">
+                  I am a winner and I want to receive promotional materials
+               </div>
+              </FormLabel>
+            </FormItem>
+          )}
+        />
+         <FormField
+          control={form.control}
+          name="submit"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0 col-span-2 relative border rounded-md has-checked:bg-violet-50/50 dark:has-checked:bg-violet-950/30 has-checked:border-violet-200 dark:has-checked:border-violet-950/80">
+              <FormLabel className="p-3">
+                <FormControl>
+                  <Checkbox
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+                <div className="ml-2 space-y-1 leading-none">
+                  I want to submit my company to the ranking
+                </div>
+                </FormLabel>
             </FormItem>
           )}
         />
