@@ -2,65 +2,17 @@
 import Logo from "./Logo.svelte";
 import { ThemeChange } from "@components/ThemeChange";
 import { MenuBar } from "@components/MenuBar.tsx";
+import { MobileMenu } from "@components/MobileMenu.tsx";
 import FacebookButton from "@components/FacebookButton.astro";
 import InstagramButton from "@components/InstagramButton.astro";
 
 const currentPath = Astro.url.pathname;
 
-const links: {
-	label: string;
-	href: string;
-	children?: { label: string; href: string; description?: string }[];
-}[] = [
-	{
-		label: "About Eagles",
-		href: "/about",
-	},
-	{
-		label: "Industries",
-		href: "/industries",
-		children: [
-			{
-				label: "Industry 1",
-				href: "/",
-				description: "Desc 1",
-			},
-			{
-				label: "Industry 2",
-				href: "/",
-			},
-			{
-				label: "Industry 3",
-				href: "/",
-			},
-			{
-				label: "Industry 4",
-				href: "/",
-			},
-			{
-				label: "Industry 5",
-				href: "/",
-			},
-			{
-				label: "Industry 6",
-				href: "/",
-				description: "Desc 6",
-			},
-			{
-				label: "Industry 7",
-				href: "/",
-			},
-			{
-				label: "Industry 8",
-				href: "/",
-			},
-		],
-	},
-	{
-		label: "Contact",
-		href: "/contact",
-	},
-];
+import { navLinks, footerLinks } from "@lib/links";
+
+let mobileLinks = navLinks.filter((link) => link.href !== "/industries");
+mobileLinks = [...mobileLinks, ...footerLinks];
+// const industriesLinks = links.filter(link=>link.href === '/industries');
 ---
 
 <div class="navbar">
@@ -68,10 +20,16 @@ const links: {
 		<Logo header />
 	</div>
 	<div class="menu-horizontal">
-		<MenuBar client:load {links} {currentPath} />
+		<MenuBar client:load links={navLinks} {currentPath} />
 		<InstagramButton />
 		<FacebookButton />
 		<ThemeChange client:load />
+	</div>
+	<div class="menu-mobile">
+		<InstagramButton />
+		<FacebookButton />
+		<!-- TODO add dropdown for industries   {industriesLinks} -->
+		<MobileMenu client:load links={mobileLinks} {currentPath} />
 	</div>
 </div>
 
@@ -84,9 +42,12 @@ const links: {
 		@apply dark:bg-zinc-900/80 bg-white/60 backdrop-blur-xs;
 	}
 	.menu-horizontal {
-		@apply flex-none flex flex-row items-center gap-2 z-3;
+		@apply hidden md:flex flex-none flex-row items-center gap-2 z-3;
 		> li {
 			@apply mx-1;
 		}
+	}
+	.menu-mobile {
+		@apply flex md:hidden;
 	}
 </style>

@@ -5,6 +5,7 @@ import PageContent from "@components/PageContent.astro";
 import { ContactForm } from "@/components/ContactForm";
 import { CopyText } from "@/components/CopyText";
 import { Separator } from "@/components/ui/separator";
+import { Mails, MapPin, Phone } from "lucide-react";
 
 const metaTitle = "Contact Eagles | Diamond Eagles USA";
 const metaDescription = "";
@@ -20,21 +21,21 @@ const metaKeywords = "";
 				Eagles USA plebiscite winners?
 			</h3>
 			<div
-				class="grid grid-cols-1 sm:grid-cols-[1fr_0.75fr] gap-6 sm:gap-x-10 md:gap-x-16 lg:gap-x-20 relative"
+				class="grid grid-cols-1 lg:grid-cols-[1fr_0.75fr] gap-6 md:gap-x-16 lg:gap-x-20 relative"
 			>
 				<div class="form-wrap">
 					<ContactForm client:load />
 				</div>
-				<Separator className="block sm:hidden gap-y-4" />
+				<Separator className="block lg:hidden gap-y-4" />
 				<Separator
 					orientation="vertical"
-					className="hidden sm:block absolute top-0 left-[56.5%]"
+					className="hidden lg:block absolute top-0 left-[56.5%]"
 				/>
 				<div class="info-wrap">
-					<div class="info-title">Contact Us</div>
 					<div class="info-wrap">
 						<div class="info-row">
-							<div class="info-label">Email:</div>
+							<div class="info-label"><Mails /> Email Us:</div>
+							<div class="info-desc">Our team is ready to assist</div>
 							<div class="info-content">
 								<a
 									href="mailto:plebiscyt@diamondeaglesusa.com"
@@ -46,8 +47,10 @@ const metaKeywords = "";
 								</span>
 							</div>
 						</div>
+						<Separator className="my-4 md:my-6 lg:my-10 sm:mx-auto !w-2/3" />
 						<div class="info-row">
-							<div class="info-label">Phone:</div>
+							<div class="info-label"><Phone /> Call Us:</div>
+							<div class="info-desc">We're available Mon-Fri, 9am-5pm.</div>
 							<div class="info-content">
 								<a href="tel:+1234567890" target="_self" title="Call Us">
 									+1 234 567 890
@@ -57,8 +60,10 @@ const metaKeywords = "";
 								</span>
 							</div>
 						</div>
+						<Separator className="my-4 md:my-6 lg:my-10 sm:mx-auto !w-2/3" />
 						<div class="info-row">
-							<div class="info-label">Address:</div>
+							<div class="info-label"><MapPin /> Visit Us:</div>
+							<div class="info-desc">Drop by our office</div>
 							<div class="info-content">
 								<a
 									href="https://maps.app.goo.gl/gYW6HyZpUEGJUfAd6"
@@ -83,17 +88,14 @@ const metaKeywords = "";
 	@reference '@styles/app.css';
 	.info-wrap {
 		@apply text-sm md:text-base;
-		.info-title {
-			@apply text-base md:text-lg;
-			@apply font-medium pt-2 sm:pt-0 pb-4;
-		}
         .info-row {
-            @apply flex flex-col relative mb-6;
+            @apply flex flex-col gap-y-2 relative;
             .info-label {
-				@apply font-light;
+				@apply text-lg md:text-base flex flex-row gap-x-2 font-light;
                 /* @apply mr-2; */
             }
             .info-content {
+				@apply text-lg md:text-base flex flex-row items-start;
 				&:hover, &:focus, &:focus-within {
 					.copy {
 						@apply !opacity-100;
@@ -108,6 +110,9 @@ const metaKeywords = "";
                     @apply opacity-75;
                 }
             }
+			.info-desc {
+				@apply text-base md:text-sm text-muted dark:text-muted-foreground;
+			}
         }
     }
 </style>

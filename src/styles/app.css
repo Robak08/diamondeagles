@@ -11,9 +11,9 @@
 } */
 
 html {
-	font-family: Inter, -apple-system, Poppins, BlinkMacSystemFont, "Segoe UI", Roboto,
-		"Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-family: Inter, -apple-system, Poppins, BlinkMacSystemFont, "Segoe UI",
+		Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 html,
 body {
@@ -92,9 +92,9 @@ body {
 	--sidebar-accent-foreground: oklch(0.21 0.006 285.885);
 	--sidebar-border: oklch(0.92 0.004 286.32);
 	--sidebar-ring: oklch(0.795 0.184 86.047);
-  }
-  
-  .dark {
+}
+
+.dark {
 	--background: oklch(0.141 0.005 285.823);
 	--foreground: oklch(0.985 0 0);
 	--card: oklch(0.21 0.006 285.885);
@@ -126,8 +126,7 @@ body {
 	--sidebar-accent-foreground: oklch(0.985 0 0);
 	--sidebar-border: oklch(1 0 0 / 10%);
 	--sidebar-ring: oklch(0.554 0.135 66.442);
-  }
-  
+}
 
 @layer base {
 	* {
@@ -136,8 +135,17 @@ body {
 	body {
 		@apply bg-background text-foreground;
 	}
-}
+	*[data-state="checked"] + .input-bg {
+		@apply dark:bg-indigo-900 !bg-indigo-50;
+	}
 
-*[data-state=checked] + .input-bg {
-	@apply dark:bg-indigo-900 !bg-indigo-50;
+	.mobile-menu-nav {
+		@apply mx-auto pt-6;
+		ul {
+			@apply flex flex-col !gap-y-6;
+			li a {
+				@apply !text-lg;
+			}
+		}
+	}
 }

@@ -6,16 +6,7 @@ import InstagramButton from "@components/InstagramButton.astro";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@components/ui/separator";
 
-const footerLinks = [
-	{
-		label: "Terms and Conditions",
-		href: "/terms-and-conditions",
-	},
-	{
-		label: "Privacy Policy",
-		href: "/privacy-policy",
-	},
-];
+import { footerLinks } from "@lib/links";
 ---
 
 <footer>
@@ -32,9 +23,7 @@ const footerLinks = [
 				footerLinks.map((link) => (
 					<li>
 						<a href={link.href} title={link.label}>
-							<Button variant="link" >
-								{link.label}
-							</Button>
+							<Button variant="link">{link.label}</Button>
 						</a>
 					</li>
 				))

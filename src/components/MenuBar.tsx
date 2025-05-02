@@ -5,17 +5,16 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
+  // navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import { cn } from "@/lib/utils"
 import { Button } from "./ui/button";
 import { Separator } from "@/components/ui/separator"
 
-// TODO hightlight current route
-
-export function MenuBar({links, currentPath}:any) {
+export function MenuBar({links, currentPath, className} : any) {
   const listItems = links.map((link: any, index : number)=> 
     (link?.children ?
-      <NavigationMenuItem key={link.href+index} className="mx-1">
+      <NavigationMenuItem key={link.href+index}  className="mx-1">
           <NavigationMenuTrigger className="font-light">{link.label}</NavigationMenuTrigger>
           <NavigationMenuContent>
           <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[1fr_.75fr_.75fr]">
@@ -177,7 +176,7 @@ export function MenuBar({links, currentPath}:any) {
     ) 
     );
   return (
-    <NavigationMenu className="text-sm leading-tight">
+    <NavigationMenu className={cn("text-sm leading-tight", className ? className : '')}>
       <NavigationMenuList>
         {listItems}
       </NavigationMenuList>

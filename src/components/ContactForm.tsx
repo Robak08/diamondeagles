@@ -33,7 +33,7 @@ import {
     PopoverContent,
     PopoverTrigger,
   } from "@/components/ui/popover"
- 
+
 
   // CHECK PHONE VALIDATION 
 
@@ -113,14 +113,14 @@ const formSchema = z.object({
   state: z.enum(states as [string, ...string[]],{
     message: "Please select a state.",
   }),
-  winner: z.optional(),
-  submit: z.optional(),
+  winner: z.boolean().optional(),
+  submit: z.boolean().optional(),
   message: z.string().min(3, {
     message: "Message must be at least 3 characters.",
   }),
 })
 
-// TODO city/state search ?
+// TODO validation on city if checkboxes are checked -> otherwise optional
  
 export function ContactForm() {
     const [open, setOpen] = React.useState(false)
@@ -159,7 +159,7 @@ export function ContactForm() {
               <FormControl>
                 <Input placeholder="Your first name" {...field} />
               </FormControl>
-              <FormMessage className="absolute top-13 sm:top-14 text-xs sm:text-sm"/>
+              <FormMessage className="absolute top-13 sm:top-14 text-xs"/>
             </FormItem>
           )}
         />
@@ -172,7 +172,7 @@ export function ContactForm() {
               <FormControl>
                 <Input placeholder="Enter Your phone" {...field} />
               </FormControl>
-              <FormMessage className="absolute top-13 sm:top-14 text-xs sm:text-sm"/>
+              <FormMessage className="absolute top-13 sm:top-14 text-xs"/>
             </FormItem>
           )}
         />
@@ -185,7 +185,7 @@ export function ContactForm() {
               <FormControl>
                 <Input placeholder="Your company" {...field} />
               </FormControl>
-                <FormMessage className="absolute top-13 sm:top-14 text-xs sm:text-sm"/>
+                <FormMessage className="absolute top-13 sm:top-14 text-xs"/>
             </FormItem>
           )}
         />
@@ -198,7 +198,7 @@ export function ContactForm() {
               <FormControl>
                 <Input placeholder="Enter your city" {...field} />
               </FormControl>
-                <FormMessage className="absolute top-13 sm:top-14 text-xs sm:text-sm"/>
+                <FormMessage className="absolute top-13 sm:top-14 text-xs"/>
             </FormItem>
           )}
         />
@@ -259,7 +259,7 @@ export function ContactForm() {
                   </Command>
                 </PopoverContent>
               </Popover>
-                <FormMessage className="absolute top-13 sm:top-14 text-xs sm:text-sm"/>
+                <FormMessage className="absolute top-13 sm:top-14 text-xs"/>
             </FormItem>
           )}
         />
@@ -314,7 +314,7 @@ export function ContactForm() {
                   {...field}
                 />
               </FormControl>
-                <FormMessage className="absolute top-19 sm:top-20 text-xs sm:text-sm"/>
+                <FormMessage className="absolute top-20 text-xs"/>
             </FormItem>
           )}
         />
