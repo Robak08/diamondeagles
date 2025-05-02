@@ -1,6 +1,8 @@
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button";
 
+// TODO show icon when on mobile
+
 export function CopyText({ text }: {text:string}) {
   	const copyText = () => {
 		if (!text || !navigator) return;
@@ -22,7 +24,7 @@ export function CopyText({ text }: {text:string}) {
 		aria-label={`Copy ${text}`}
 		onClick={copyText}
 	>
-		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-2.5 sm:w-4 h-2.5 sm:h-4"
+		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-2.5 md:w-4 h-2.5 md:h-4"
 			><path
 				stroke="currentColor"
 				strokeLinecap="square"

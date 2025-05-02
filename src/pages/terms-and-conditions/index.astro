@@ -183,7 +183,7 @@ const metaKeywords = "";
         @apply text-center;
     }
 	ol {
-        @apply ml-0 pl-0;
+        @apply ml-4 md:ml-0 pl-0;
 		counter-reset: item;
 		li {
 			/* margin-bottom: .5em; */
@@ -207,7 +207,7 @@ const metaKeywords = "";
 				@apply flex flex-row items-center;
             }
             .copy {
-                @apply transition-opacity opacity-0 -ml-1;
+                @apply transition-opacity opacity-60 md:opacity-0 -ml-1;
                 &:hover, &:focus, &:focus-within {
                     @apply !opacity-100;
                 }
