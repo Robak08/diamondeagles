@@ -127,9 +127,8 @@ body {
 	--sidebar-border: oklch(1 0 0 / 10%);
 	--sidebar-ring: oklch(0.554 0.135 66.442);
 }
-
 @utility container {
-	@apply mx-auto;
+	@apply mx-auto py-8 md:py-12 lg:py-16 xl:py-20 2xl:py-24;
 	padding-inline: 1rem;
   }
 

@@ -67,7 +67,8 @@ const { metaTitle, metaDescription, metaKeywords } = Astro.props;
 <style lang="postcss">
 	@reference '@styles/app.css';
 	.container {
-		@apply flex flex-col justify-center items-center;		
+		@apply flex flex-col justify-center items-center;
+		@apply min-h-[calc(100vh-200px)];
 	}
 	/* .content {
 		@apply min-h-[calc(100vh-65px)];

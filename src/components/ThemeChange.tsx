@@ -5,12 +5,12 @@ import { Button } from "@/components/ui/button"
 
 export function ThemeChange() {
   const [theme, setThemeState] = React.useState<
-    "theme-light" | "dark" | "system"
-  >("theme-light")
+    "light" | "dark" | "system"
+  >("system")
     
   React.useEffect(() => {
     const isDarkMode = document.documentElement.classList.contains("dark")
-    setThemeState(isDarkMode ? "dark" : "theme-light")
+    setThemeState(isDarkMode ? "dark" : "light")
   }, [])
  
   React.useEffect(() => {
@@ -22,7 +22,7 @@ export function ThemeChange() {
   }, [theme])
  
   return (
-    <Button title="Toggle theme" variant="outline" size="icon" onClick={() => setThemeState(document.documentElement.classList.contains("dark") ? "theme-light" : "dark")} 
+    <Button title="Toggle theme" variant="outline" size="icon" onClick={() => setThemeState(document.documentElement.classList.contains("dark") ? "light" : "dark")} 
        className="cursor-pointer transition-colors hover:text-primary-darker dark:hover:text-primary"
     >
         <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 pointer-events-none" />

@@ -233,7 +233,7 @@ export function ContactForm() {
                       className="h-9"
                     />
                     <CommandList>
-                      <CommandEmpty>No framework found.</CommandEmpty>
+                      <CommandEmpty>No state found.</CommandEmpty>
                       <CommandGroup>
                         {states.map((state) => (
                           <CommandItem
@@ -273,6 +273,7 @@ export function ContactForm() {
                   <Checkbox
                     checked={field.value}
                     onCheckedChange={field.onChange}
+                    // TODO add here mutually exclusive check
                   />
                 </FormControl>
                <div className="ml-2 space-y-1 leading-none">
