@@ -7,7 +7,7 @@ export function ThemeChange() {
   const [theme, setThemeState] = React.useState<
     "light" | "dark" | "system"
   >("system")
-    
+  // TODO not a fix -> pass theme store value here ?
   React.useEffect(() => {
     const isDarkMode = document.documentElement.classList.contains("dark")
     setThemeState(isDarkMode ? "dark" : "light")
@@ -19,8 +19,9 @@ export function ThemeChange() {
       (theme === "system" &&
         window.matchMedia("(prefers-color-scheme: dark)").matches)
     document.documentElement.classList[isDark ? "add" : "remove"]("dark")
+    // localStorage?.setItem("theme", theme);
   }, [theme])
- 
+
   return (
     <Button title="Toggle theme" variant="outline" size="icon" onClick={() => setThemeState(document.documentElement.classList.contains("dark") ? "light" : "dark")} 
        className="cursor-pointer transition-colors hover:text-primary-darker dark:hover:text-primary"

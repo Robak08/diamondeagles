@@ -5,14 +5,13 @@ import { MenuBar } from "@components/MenuBar.tsx";
 import { MobileMenu } from "@components/MobileMenu.tsx";
 import FacebookButton from "@components/FacebookButton.astro";
 import InstagramButton from "@components/InstagramButton.astro";
-
 const currentPath = Astro.url.pathname;
-
 import { navLinks, footerLinks } from "@lib/links";
 
 let mobileLinks = navLinks.filter((link) => link.href !== "/industries");
 mobileLinks = [...mobileLinks, ...footerLinks];
 // const industriesLinks = links.filter(link=>link.href === '/industries');
+
 ---
 
 <div class="navbar">

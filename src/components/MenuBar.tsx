@@ -7,11 +7,11 @@ import {
   NavigationMenuTrigger,
   // navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import { cn } from "@/lib/utils"
+// import { cn } from "@/lib/utils"
 import { Button } from "./ui/button";
 import { Separator } from "@/components/ui/separator"
 
-export function MenuBar({links, currentPath, className} : any) {
+export function MenuBar({links, currentPath} : any) {
   const listItems = links.map((link: any, index : number)=> 
     (link?.children ?
       <NavigationMenuItem key={link.href+index}  className="mx-1">
@@ -176,7 +176,7 @@ export function MenuBar({links, currentPath, className} : any) {
     ) 
     );
   return (
-    <NavigationMenu className={cn("text-sm leading-tight", className ? className : '')}>
+    <NavigationMenu className="text-sm leading-tight">
       <NavigationMenuList>
         {listItems}
       </NavigationMenuList>
