@@ -1,0 +1,15 @@
+---
+import Layout from "@layouts/Layout.astro";
+import PageHeader from "@components/PageHeader.astro";
+
+interface Props {
+	error: unknown;
+}
+
+const { error } = Astro.props;
+---
+
+<Layout>
+	<PageHeader title="404 Error occured" />
+	<div>{error instanceof Error ? error.message : "Unknown error"}</div>
+</Layout>
