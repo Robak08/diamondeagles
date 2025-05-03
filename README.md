@@ -1,9 +1,10 @@
 # DIAMOND EAGLES USA
-
 ## TODO:
+>Building:
+ - [ ]  Config file for build
+ - [ ] Build script with multiple config files for domain list
  >Styles:
  - [ ] button - gradient variant
- ---
  >Components: 
  - [ ] Company Listing
  - [ ] Single Company
