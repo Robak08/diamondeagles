@@ -20,7 +20,7 @@
 
 <div class="delogo" class:hero class:header class:footer>
 	{#if header}
-		<a href="/" title="Home">
+		<a href="/" title="Home" aria-label="Diamond Eagles USA">
 			<LogoSvg {footer} {scrolled} {header} {home} />
 		</a>
 	{:else}

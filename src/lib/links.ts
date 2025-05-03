@@ -1,57 +1,33 @@
 export const navLinks: {
 	label: string;
 	href: string;
-	children?: { label: string; href: string; description?: string }[];
+	children?: { label: string; href: string; description?: string | null }[];
 }[] = [
-	{
-		label: "About Eagles",
-		href: "/about",
-	},
-	{
-		label: "Industries",
-		href: "/industries",
-		children: [
-			{
-				label: "Industry 1",
-				href: "/",
-				description: "Desc 1",
-			},
-			{
-				label: "Industry 2",
-				href: "/",
-			},
-			{
-				label: "Industry 3",
-				href: "/",
-			},
-			{
-				label: "Industry 4",
-				href: "/",
-			},
-			{
-				label: "Industry 5",
-				href: "/",
-			},
-			{
-				label: "Industry 6",
-				href: "/",
-				description: "Desc 6",
-			},
-			{
-				label: "Industry 7",
-				href: "/",
-			},
-			{
-				label: "Industry 8",
-				href: "/",
-			},
-		],
-	},
-	{
-		label: "Contact",
-		href: "/contact",
-	},
-];
+		{
+			label: "About Eagles",
+			href: "/about",
+		},
+		{
+			label: "Industries",
+			href: "/industries",
+			children: [
+				{ label: 'Gastronomy', href: '#', description: null },
+				{ label: 'Retail', href: '#', description: null },
+				{ label: 'Health ', href: '#', description: null },
+				{ label: 'Services', href: '#', description: null },
+				{ label: 'Technology', href: '#', description: null },
+				{ label: 'Education', href: '#', description: null },
+				{ label: 'Entertainment', href: '#', description: null },
+				{ label: 'Financial Services', href: '#', description: null },
+				{ label: 'Transport', href: '#', description: null },
+				{ label: 'Logistics', href: '#', description: null },
+			],
+		},
+		{
+			label: "Contact",
+			href: "/contact",
+		},
+	];
 
 
 export const footerLinks = [
@@ -64,4 +40,3 @@ export const footerLinks = [
 		href: "/privacy-policy",
 	},
 ];
-

@@ -1,0 +1,73 @@
+---
+import {
+	Drawer,
+	DrawerClose,
+	DrawerContent,
+	DrawerDescription,
+	DrawerFooter,
+	DrawerHeader,
+	DrawerTitle,
+	DrawerTrigger,
+} from "@/components/ui/drawer";
+import {
+	NavigationMenu,
+	NavigationMenuContent,
+	NavigationMenuItem,
+	NavigationMenuLink,
+	NavigationMenuList,
+	NavigationMenuTrigger,
+	// navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { Button } from "@/components/ui/button";
+
+import { X, SquareMenu } from "@lucide/astro";
+const { links } = Astro.props;
+
+console.log(links);
+
+const currentPath = Astro.url.pathname;
+let drawerOpen: true | false = false;
+
+const toggleDrawer = () => (drawerOpen = !drawerOpen);
+---
+
+<Drawer open={drawerOpen} onOpenChange={toggleDrawer} direction="right">
+	<DrawerTrigger asChild>
+		<Button variant="ghost" title="Open menu">
+			<SquareMenu className="!w-6 !h-6" />
+		</Button>
+	</DrawerTrigger>
+	<DrawerContent asChild className="h-full" >
+		<DrawerHeader asChild className="relative py-6">
+			<DrawerTitle asChild className="uppercase text-xl text-left mt-2">
+				Diamond Eagles
+			</DrawerTitle>
+			<DrawerClose asChild className="absolute right-10 top-7">
+				<Button variant="outline">
+					<X />
+				</Button>
+			</DrawerClose>
+		</DrawerHeader>
+		<div class="menu-content">
+			<NavigationMenu asChild className="mobile-menu-nav">
+				<NavigationMenuList asChild>
+                    XXX
+					<!-- {
+						links.map((link: any, index: number) => (
+							<NavigationMenuItem key={link.href + index}>
+								<NavigationMenuLink asChild>
+									<a
+										href={link.href}
+										title={link.label}
+										class={currentPath === link.href ? "text-primary" : ""}>
+										{link.label}
+									</a>
+								</NavigationMenuLink>
+							</NavigationMenuItem>
+						))
+					} -->
+				</NavigationMenuList>
+			</NavigationMenu>
+		</div>
+	</DrawerContent>
+</Drawer>

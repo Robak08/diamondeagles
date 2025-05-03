@@ -1,17 +1,17 @@
 ---
 import Logo from "./Logo.svelte";
-import { ThemeChange } from "@components/ThemeChange";
 import { MenuBar } from "@components/MenuBar.tsx";
 import { MobileMenu } from "@components/MobileMenu.tsx";
-import FacebookButton from "@components/FacebookButton.astro";
-import InstagramButton from "@components/InstagramButton.astro";
+// import MobileNav from "@components/MobileNav.astro";
+import ThemeToggle from "@components/ThemeToggle.astro";
+import FacebookButton from "@components/Socials/FacebookButton.astro";
+import InstagramButton from "@components/Socials/InstagramButton.astro";
 const currentPath = Astro.url.pathname;
 import { navLinks, footerLinks } from "@lib/links";
 
 let mobileLinks = navLinks.filter((link) => link.href !== "/industries");
 mobileLinks = [...mobileLinks, ...footerLinks];
 // const industriesLinks = links.filter(link=>link.href === '/industries');
-
 ---
 
 <div class="navbar">
@@ -22,13 +22,17 @@ mobileLinks = [...mobileLinks, ...footerLinks];
 		<MenuBar client:load links={navLinks} {currentPath} />
 		<InstagramButton />
 		<FacebookButton />
-		<ThemeChange client:load />
+		<ThemeToggle />
 	</div>
 	<div class="menu-mobile">
 		<InstagramButton />
 		<FacebookButton />
 		<!-- TODO add dropdown for industries   {industriesLinks} -->
-		<MobileMenu client:load links={mobileLinks} {currentPath} />
+		<!-- TODO migrate MobileMenu to Astro component -->
+		<MobileMenu client:load links={mobileLinks} {currentPath}>
+			<!-- <ThemeToggle /> -->
+		</MobileMenu>
+		<!-- <MobileNav links={mobileLinks} {currentPath} /> -->
 	</div>
 </div>
 

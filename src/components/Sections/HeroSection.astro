@@ -1,0 +1,74 @@
+---
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+
+import { ArrowRight, ArrowUpRight } from "@lucide/astro";
+import { Picture } from "astro:assets";
+import heroImage from "@/assets/de_hero.png";
+---
+
+<section id="hero" class="container">
+	<div class="grid items-center gap-8 md:grid-cols-[0.75fr_1fr]">
+		<div
+			class="flex flex-col items-center text-center lg:items-start lg:text-left"
+		>
+			<Badge variant="outline">
+				👑 Local leaders
+				<ArrowUpRight class="ml-2 size-4" />
+			</Badge>
+
+			<h1 class="my-6 text-5xl font-bold text-pretty md:text-6xl">
+				Lead the <span
+					class="bg-gradient-to-tr from-primary to-primary-darker bg-clip-text text-transparent"
+					>Region</span
+				>. <span class="inline-block relative"
+					>Shape the Future<span
+						class="bg-gradient-to-bl from-primary to-primary-darker bg-clip-text text-transparent"
+						>.</span
+					>
+					<!-- <span class="underline-gradient"></span> -->
+				</span>
+			</h1>
+			<p class="mb-8 max-w-xl text-muted-foreground md:text-xl">
+				Join Eagles to ensure Your customers receive top-quality products and
+				services.
+			</p>
+			<div
+				class="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start"
+			>
+				<Button variant="default">
+					<a href="/contact" title="Become Eagle"> Become an Eagle </a>
+				</Button>
+				<div class="flex items-center gap-3">
+					<Separator className="flex-1 !w-6" />
+					<span class="text-muted-foreground">or</span>
+					<Separator className="flex-1 !w-6" />
+				</div>
+				<Button variant="outline">
+					<a href="#about" title="About us">
+						Learn more <ArrowRight class="size-4 ml-1 inline" />
+					</a>
+				</Button>
+			</div>
+		</div>
+		<Picture
+			src={heroImage}
+			formats={["avif", "webp"]}
+			alt="Join Diamond Eagles USA"
+			class="rounded-lg lg:rounded-xl shadow-md max-h-96 w-full object-cover"
+		/>
+	</div>
+</section>
+
+<style lang="postcss">
+	@reference '@styles/app.css';
+	#hero {
+		/* @apply flex flex-col items-center justify-center;
+		@apply mx-auto  md:max-w-[90rem];
+		@apply py-8 md:py-12 lg:py-16 xl:py-20 2xl:py-24; */
+	}
+	.underline-gradient {
+		@apply absolute inset-x-0 -bottom-[6px] h-2 bg-gradient-to-tr from-primary to-primary-darker rounded-[2px] -z-1;
+	}
+</style>

@@ -1,9 +1,36 @@
 ---
-import Welcome from "@components/Welcome.astro";
+// import Welcome from "@components/Welcome.astro";
 import Layout from "@layouts/Layout.astro";
-// import { Image } from "astro:assets";
+import HeroSection from "@components/Sections/HeroSection.astro";
+import AboutSection from "@components/Sections/AboutSection.astro";
+
+import StatCard from "@components/StatCard.astro";
+
+import { Flame, FileSearch, ChartNoAxesCombined } from "@lucide/astro";
 ---
-<Layout>
-	<Welcome />
-	<!-- <Image src={myImage} alt="A description of my image." /> -->
+
+<Layout full>
+	<HeroSection />
+	<div
+		class="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-14 max-w-[60vw] mx-auto"
+	>
+		<a href="#" class="block w-full">
+			<StatCard stat="593,504" text="evaluated companies">
+				<ChartNoAxesCombined size="36" />
+			</StatCard>
+		</a>
+		<a href="#" class="block w-full">
+			<StatCard stat="293,482" text="customer ratings">
+				<Flame size="36" />
+			</StatCard>
+		</a>
+		<a href="#" class="block w-full">
+			<StatCard stat="393,504" text="reviewed pages">
+				<FileSearch size="36" />
+			</StatCard>
+		</a>
+	</div>
+	<div class="container">
+		<AboutSection />
+	</div>
 </Layout>

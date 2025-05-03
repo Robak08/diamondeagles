@@ -3,13 +3,15 @@ import "@styles/app.css";
 import Navbar from "@components/Navbar.astro";
 import Footer from "@components/Footer.astro";
 import { Toaster } from "@components/ui/sonner";
-const { metaTitle, metaDescription, metaKeywords } = Astro.props;
+import Themes from "astro-themes";
+const { metaTitle, metaDescription, metaKeywords, full } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<script is:inline>
+		<Themes />
+		<!-- <script is:inline>
 			const getThemePreference = () => {
 				if (
 					typeof localStorage !== "undefined" &&
@@ -33,7 +35,7 @@ const { metaTitle, metaDescription, metaKeywords } = Astro.props;
 					attributeFilter: ["class"],
 				});
 			}
-		</script>
+		</script> -->
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -51,11 +53,10 @@ const { metaTitle, metaDescription, metaKeywords } = Astro.props;
 				: "Diamond Eagles USA is an honor awarded to the top-performing companies in their industries. Each year, out of thousands of businesses, local market leaders are selected for standing out from the competition through exceptional quality and a commitment to continuous growth."}
 		/>
 		<meta name="keywords" content={metaKeywords ? metaKeywords : ""} />
-	
 	</head>
 	<body>
 		<Navbar />
-		<div class="container">
+		<div class={full ? "" : "container"}>
 			<slot />
 		</div>
 		<Footer />

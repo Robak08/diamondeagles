@@ -1,0 +1,70 @@
+---
+import { CopyText } from "@components/CopyText.tsx";
+---
+
+<div class="info-wrap">
+	<div class="info-row">
+		<div class="info-label">Email:</div>
+		<div class="info-content">
+			<a
+				href="mailto:plebiscyt@diamondeaglesusa.com"
+				target="_self"
+				title="Contact Us">plebiscyt@diamondeaglesusa.com</a
+			>
+		</div>
+		<span class="copy">
+			<CopyText text="plebiscyt@diamondeaglesusa.com" client:load />
+		</span>
+	</div>
+	<div class="info-row">
+		<div class="info-label">Phone:</div>
+		<div class="info-content">
+			<a href="tel:+1234567890" target="_self" title="Call Us">
+				+1 234 567 890
+			</a>
+		</div>
+		<span class="copy">
+			<CopyText text="+1 234 567 890" client:load />
+		</span>
+	</div>
+	<div class="info-row">
+		<div class="info-label">Address:</div>
+		<div class="info-content">
+			<a
+				href="https://maps.app.goo.gl/gYW6HyZpUEGJUfAd6"
+				title="Find Us"
+				target="_blank"
+				rel="noreferrer nofollower external">1234 Main St, Anytown, USA</a
+			>
+		</div>
+		<span class="copy">
+			<CopyText text="1234 Main St, Anytown, USA" client:load />
+		</span>
+	</div>
+</div>
+
+<style lang="postcss">
+    @reference '@styles/app.css';
+     .info-wrap {
+        .info-row {
+            @apply flex flex-row items-center gap-2 md:gap-3 relative;
+            .info-label {
+                /* @apply mr-2; */
+            }
+            .info-content {
+				@apply flex flex-row items-center;
+            }
+            .copy {
+                @apply transition-opacity opacity-60 md:opacity-0 -ml-1;
+                &:hover, &:focus, &:focus-within {
+                    @apply !opacity-100;
+                }
+            }
+            &:hover, &:focus, &:focus-within {
+                > .copy {
+                    @apply opacity-75;
+                }
+            }
+        }
+    }
+</style>
