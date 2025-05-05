@@ -31,19 +31,19 @@ export function StatCard({
 		<div
 			ref={ref}
 			data-slot="card"
-			className="bg-muted/50 text-card-foreground flex flex-col gap-6 shadow-sm rounded-3xl border-2 p-4 md:p-5 xl:p-8 transition hover:-translate-y-3 hover:border-primary">
+			className="bg-muted/50 text-card-foreground flex flex-col gap-6 shadow-sm rounded-3xl border-2 p-4 md:p-5 xl:p-8 transition hover:-translate-y-3 hover:border-primary m-4 sm:m-0">
 			<div className="block p-0">
-				<div className="flex flex-col gap-4">
+				<div className="flex flex-col items-center md:items-start gap-4">
 					<span className="relative flex justify-center items-center size-8 shrink-0 h-12 w-12 overflow-hidden rounded-full border">
 						{/* <slot name="icon" /> */}
 						{icon ? icon : ""}
 					</span>
 					<div
 						data-stat={stat}
-						className="mt-4 text-4xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight font-semibold">
+						className="mt-4 text-4xl lg:text-5xl leading-tight font-semibold">
 						<AnimatedNumber value={currentNumber} duration={duration} />
 					</div>
-					<p className="mb-5 max-w-52 text-base lg:text-lg font-medium">
+					<p className="mb-5 max-w-52 text-base lg:text-lg font-medium text-center md:text-left">
 						{text}
 					</p>
 				</div>

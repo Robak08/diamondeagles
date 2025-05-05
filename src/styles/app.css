@@ -14,7 +14,7 @@ html {
 }
 html,
 body {
-	@apply z-1 m-0 w-full;
+	@apply z-1 m-0 w-full overflow-x-hidden;
 }
 
 @theme {
@@ -139,7 +139,7 @@ body {
 	.container {
 		p {
 			@apply my-4 md:my-6;
-			@apply text-lg xl:text-xl;
+			@apply text-base sm:text-lg xl:text-xl;
 		}
 	}
 
