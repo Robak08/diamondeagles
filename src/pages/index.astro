@@ -11,20 +11,18 @@ import { Flame, FileSearch, ChartNoAxesCombined } from "@lucide/astro";
 
 <Layout full>
 	<HeroSection />
-	<div
-		class="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-14 max-w-[60vw] mx-auto"
-	>
-		<a href="#" class="block w-full">
+	<div class="stats-wrap">
+		<a href="#" class="stats-card">
 			<StatCard stat="593,504" text="evaluated companies">
 				<ChartNoAxesCombined size="36" />
 			</StatCard>
 		</a>
-		<a href="#" class="block w-full">
+		<a href="#" class="stats-card">
 			<StatCard stat="293,482" text="customer ratings">
 				<Flame size="36" />
 			</StatCard>
 		</a>
-		<a href="#" class="block w-full">
+		<a href="#" class="stats-card">
 			<StatCard stat="393,504" text="reviewed pages">
 				<FileSearch size="36" />
 			</StatCard>
@@ -34,3 +32,13 @@ import { Flame, FileSearch, ChartNoAxesCombined } from "@lucide/astro";
 		<AboutSection />
 	</div>
 </Layout>
+
+<style lang="postcss">
+	@reference '@styles/app.css';
+	.stats-wrap {
+		@apply grid grid-cols-1 justify-items-center gap-6 md:gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-14 md:max-w-[75vw] 2xl:max-w-[60vw] mx-auto;
+		.stats-card {
+			@apply block w-full max-w-[320px];
+		}
+	}
+</style>

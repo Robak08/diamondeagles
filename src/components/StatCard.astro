@@ -4,7 +4,7 @@ const { stat, text, icon } = Astro.props;
 
 <div
 	data-slot="card"
-	class="bg-card text-card-foreground flex flex-col gap-6 shadow-sm rounded-3xl border-2 p-8 transition hover:-translate-y-3 hover:border-primary"
+	class="bg-card text-card-foreground flex flex-col gap-6 shadow-sm rounded-3xl border-2 p-4 md:p-5 xl:p-8 transition hover:-translate-y-3 hover:border-primary"
 >
 	<div class="block p-0">
 		<div class="flex flex-col gap-4">
@@ -13,27 +13,12 @@ const { stat, text, icon } = Astro.props;
 			>
 				<slot />
 			</span>
-			<div class="mt-4 text-4xl md:text-5xl leading-tight font-semibold">
+			<div class="mt-4 text-4xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight font-semibold">
 				{stat}
 			</div>
-			<p class="mb-5 max-w-52 text-lg font-medium">
+			<p class="mb-5 max-w-52 text-base lg:text-lg font-medium">
 				{text}
 			</p>
 		</div>
 	</div>
 </div>
-
-<!--                 
-    <img
-					data-slot="avatar-image"
-					class="aspect-square size-full"
-					alt=""
-					src="/images/block/avatar-1.webp"
-	/>
-    </span>
-    <img
-				src="/images/block/logos/company/fictional-company-logo-1.svg"
-				alt=""
-				class="h-6"
-	/>
--->

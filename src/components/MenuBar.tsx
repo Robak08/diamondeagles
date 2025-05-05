@@ -10,6 +10,7 @@ import {
 // import { cn } from "@/lib/utils"
 import { Button } from "./ui/button";
 import { Separator } from "@/components/ui/separator";
+import SVG from "react-inlinesvg";
 
 export function MenuBar({ links, currentPath }: any) {
 	const listItems = links.map((link: any, index: number) =>
@@ -20,7 +21,7 @@ export function MenuBar({ links, currentPath }: any) {
 				</NavigationMenuTrigger>
 				<NavigationMenuContent>
 					<ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[1fr_.75fr_.75fr]">
-						<li className="row-span-4">
+						<li className="row-span-5">
 							<NavigationMenuLink asChild>
 								<div className="flex h-full w-full select-none flex-col justify-start rounded-md border border-border/80 gap-4 bg-gradient-to-br from-muted/40 to-muted/60 dark:from-muted-60 dark:to-muted/90 px-4 py-3 no-underline outline-none focus:shadow-md">
 									<div className="w-full p-2">
@@ -148,9 +149,7 @@ export function MenuBar({ links, currentPath }: any) {
 											</g>
 										</svg>
 									</div>
-									<p className="text-sm leading-tight text-muted-foreground text-justify">
-										Don't <u>miss out</u> on being the best company in Your
-										region.{" "}
+									<p className="text-sm leading-tight text-muted-foreground text-left">
 										<span className="text-primary-darker dark:text-primary">
 											Stand out
 										</span>{" "}
@@ -158,7 +157,7 @@ export function MenuBar({ links, currentPath }: any) {
 									</p>
 									<Separator className="my-2" />
 									<p className="transition-colors hover:text-primary-darker dark:hover:text-primary group">
-										Select Your industry
+										Select Industry
 										<svg
 											className="inline !w-[26px] !h-auto ml-2 fill-none"
 											viewBox="0 0 24 24"
@@ -177,7 +176,7 @@ export function MenuBar({ links, currentPath }: any) {
 										<Separator className="flex-1" />
 									</div>
 									<div className="text-md leading-tight text-primary">
-										<Button variant="default">
+										<Button variant="gradient">
 											<a href="/contact" title="Become Eagle">
 												Become an Eagle
 											</a>
@@ -196,13 +195,22 @@ export function MenuBar({ links, currentPath }: any) {
 											href={ch.href}
 											title={ch.label}
 											target="_blank"
-											className="w-full text-center block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+											className="w-full text-center flex flex-row items-center gap-x-2 select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-primary focus:bg-accent focus:text-accent-foreground"
 											// {ch.description}
 										>
-											<div className="text-sm font-medium leading-none">
+											{ch.svg && (
+												<SVG
+													src={ch.svg}
+													className="!w-[1.325rem] !h-[1.325rem] text-foreground"
+													// width={128}
+													// height="auto"
+													title={ch.label}
+												/>
+											)}
+											<div className="text-xs font-medium leading-none">
 												{ch.label}
 											</div>
-											<p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+											<p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
 												{ch.description}
 											</p>
 										</a>

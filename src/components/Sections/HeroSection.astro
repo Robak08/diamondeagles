@@ -12,7 +12,7 @@ import {
 } from "@lucide/astro";
 import { Picture } from "astro:assets";
 import heroImage from "@/assets/de_hero.png";
-import statueImage from "@/assets/de_statue.png";
+import statueImage from "@/assets/de_statue_b.png";
 ---
 
 <section id="hero" class="container">
@@ -44,10 +44,7 @@ import statueImage from "@/assets/de_statue.png";
 			<div
 				class="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start"
 			>
-				<Button
-					variant="default"
-					className="bg-linear-to-br from-primary to-primary-darker"
-				>
+				<Button variant="gradient">
 					<a href="/contact" title="Become Eagle"> Become an Eagle </a>
 				</Button>
 				<div class="flex items-center gap-3">
@@ -62,7 +59,7 @@ import statueImage from "@/assets/de_statue.png";
 				</Button>
 			</div>
 		</div>
-		<div class="mx-auto">
+		<div class="mx-auto -translate-x-8 md:translate-none">
 			<div
 				class="grid grid-cols-[4.8rem_5.625rem_10.75rem] grid-rows-[9.3rem_8.68rem_1.125rem_3.875rem] gap-[0.625rem] sm:grid-cols-[5.3rem_6.25rem_12rem] sm:grid-rows-[10.3rem_9.625rem_1.25rem_4.3rem] sm:gap-[0.8rem] xl:grid-cols-[_8.5rem_10rem_19.3rem] xl:grid-rows-[16.625rem_15.5rem_1.375rem_6.9rem] xl:gap-[1.25rem]"
 			>
@@ -140,38 +137,34 @@ import statueImage from "@/assets/de_statue.png";
 							src={statueImage}
 							formats={["avif", "webp"]}
 							alt="Diamond Eagles USA Prize"
-							class="size-full object-cover object-center brightness-90 dark:brightness-80"
+							class="size-full object-cover object-center"
 						/>
 					</div>
 				</div>
 				<div class="col-[-2_/_-1] row-[-1_/_-2]">
 					<div class="group flex w-full items-center gap-3">
-						<div
-							class="h-12 w-12 flex-shrink-0 rounded-full bg-muted flex items-center justify-center group-hover:bg-accent/50"
-						>
-							<Crown class="size-7 object-cover object-center" />
+						<div class="hero-cta-circle">
+							<Crown class="size-5 md:size-7 object-cover object-center" />
 						</div>
 						<div class="flex w-full flex-col gap-1">
 							<a
 								href="#"
 								title="View Top-Ranking Companies"
-								class={`${buttonVariants({ variant: "ghost" })} rounded-lg bg-muted h-10 group-hover:bg-accent/50`}
+								class={`${buttonVariants({ variant: "ghost" })} hero-cta-square`}
 							>
 								View Top-Ranking Companies
 							</a>
 						</div>
 					</div>
 					<div class="group mt-3 flex w-full items-center gap-3">
-						<div
-							class="h-12 w-12 flex-shrink-0 rounded-full bg-muted flex items-center justify-center group-hover:bg-accent/50"
-						>
+						<div class="hero-cta-circle">
 							<LayoutPanelLeft class="size-7 object-cover object-center" />
 						</div>
 						<div class="flex w-full flex-col gap-1">
 							<a
 								href="#"
 								title="View Categories"
-								class={`${buttonVariants({ variant: "ghost" })} rounded-lg bg-muted h-10 group-hover:bg-accent/50`}
+								class={`${buttonVariants({ variant: "ghost" })} hero-cta-square`}
 							>
 								View Categories
 							</a>
@@ -185,6 +178,15 @@ import statueImage from "@/assets/de_statue.png";
 
 <style lang="postcss">
 	@reference '@styles/app.css';
+	#hero {
+		@apply mb-10;
+	}
+	.hero-cta-circle {
+		@apply h-9 w-9 md:h-12 md:w-12 flex-shrink-0 rounded-full bg-muted flex items-center justify-center group-hover:bg-accent/50 border border-primary/25;
+	}
+	.hero-cta-square {
+		@apply text-xs md:text-sm rounded-lg bg-muted h-7 md:h-10 group-hover:bg-accent/50 border border-primary/25 w-fit;
+	}
 	.underline-gradient {
 		@apply absolute inset-x-0 -bottom-[6px] h-2 bg-gradient-to-tr from-primary to-primary-darker rounded-[2px] -z-1;
 	}
