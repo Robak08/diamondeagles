@@ -48,7 +48,7 @@ export function MobileMenu({ links, currentPath, className, children }: any) {
 	return (
 		<Drawer open={open} onOpenChange={setOpen} direction="right">
 			<DrawerTrigger asChild>
-				<Button variant="ghost" title="Open menu">
+				<Button variant="ghost" title="Open menu" className="has-[>svg]:px-2">
 					<SquareMenu className="!w-6 !h-6" />
 				</Button>
 			</DrawerTrigger>

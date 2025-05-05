@@ -17,7 +17,7 @@ body {
 	@apply z-1 m-0 w-full;
 }
 
-@theme  {
+@theme {
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);
 	--radius-lg: var(--radius);
@@ -125,9 +125,9 @@ body {
 	--sidebar-ring: oklch(0.554 0.135 66.442);
 }
 @utility container {
-	@apply mx-auto py-8 md:py-12 lg:py-16 xl:py-20 2xl:py-24;
+	@apply mx-auto py-8 md:py-12 lg:py-16 xl:py-20 2xl:py-22;
 	padding-inline: 1rem;
-  }
+}
 
 @layer base {
 	* {
@@ -136,10 +136,17 @@ body {
 	body {
 		@apply bg-background text-foreground scroll-smooth;
 	}
+	.container {
+		p {
+			@apply my-4 md:my-6;
+			@apply text-lg xl:text-xl;
+		}
+	}
+
+	//contact form checkboxes styles
 	*[data-state="checked"] + .input-bg {
 		@apply dark:bg-indigo-900 !bg-indigo-50;
 	}
-
 	.mobile-menu-nav {
 		@apply mx-auto pt-6;
 		ul {

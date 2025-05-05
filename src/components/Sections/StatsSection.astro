@@ -18,7 +18,7 @@ import { Flame, FileSearch, ChartNoAxesCombined } from "@lucide/astro";
 	<div class="stats-card">
 		<StatCard
 			stat="293,482"
-			text="evaluated companies"
+			text="customer ratings"
 			duration={2800}
 			client:load
 		>
@@ -26,12 +26,7 @@ import { Flame, FileSearch, ChartNoAxesCombined } from "@lucide/astro";
 		</StatCard>
 	</div>
 	<div class="stats-card">
-		<StatCard
-			stat="393,504"
-			text="evaluated companies"
-			duration={4200}
-			client:load
-		>
+		<StatCard stat="393,504" text="reviewed pages" duration={4200} client:load>
 			<FileSearch size="36" slot="icon" />
 		</StatCard>
 	</div>
@@ -44,7 +39,7 @@ import { Flame, FileSearch, ChartNoAxesCombined } from "@lucide/astro";
 		@apply md:max-w-[75vw] 2xl:max-w-[60vw] mx-auto;
 		@apply py-6 lg:py-10 xl:pb-16;
 		.stats-card {
-			@apply block w-full max-w-[320px];
+			@apply block w-full max-w-[320px] select-none;
 		}
 	}
 </style>

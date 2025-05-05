@@ -31,7 +31,7 @@ export function StatCard({
 		<div
 			ref={ref}
 			data-slot="card"
-			className="bg-card text-card-foreground flex flex-col gap-6 shadow-sm rounded-3xl border-2 p-4 md:p-5 xl:p-8 transition hover:-translate-y-3 hover:border-primary">
+			className="bg-muted/50 text-card-foreground flex flex-col gap-6 shadow-sm rounded-3xl border-2 p-4 md:p-5 xl:p-8 transition hover:-translate-y-3 hover:border-primary">
 			<div className="block p-0">
 				<div className="flex flex-col gap-4">
 					<span className="relative flex justify-center items-center size-8 shrink-0 h-12 w-12 overflow-hidden rounded-full border">

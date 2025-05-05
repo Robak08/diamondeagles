@@ -20,11 +20,11 @@ export function MenuBar({ links, currentPath }: any) {
 					{link.label}
 				</NavigationMenuTrigger>
 				<NavigationMenuContent>
-					<ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[1fr_.75fr_.75fr]">
-						<li className="row-span-5">
+					<ul className="grid gap-x-3 gap-y-1 p-2 md:p-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[1fr_.75fr_.75fr]">
+						<li className="row-span-5 text-center">
 							<NavigationMenuLink asChild>
-								<div className="flex h-full w-full select-none flex-col justify-start rounded-md border border-border/80 gap-4 bg-gradient-to-br from-muted/40 to-muted/60 dark:from-muted-60 dark:to-muted/90 px-4 py-3 no-underline outline-none focus:shadow-md">
-									<div className="w-full p-2">
+								<div className="flex h-full w-full select-none flex-col justify-start rounded-md border border-border/80 gap-2 bg-gradient-to-br from-muted/40 to-muted/60 dark:from-muted-60 dark:to-muted/90 px-4 py-3 no-underline outline-none focus:shadow-md">
+									<div className="w-full px-4 py-2">
 										<svg
 											className="!w-full !h-full fill-current"
 											xmlns="http://www.w3.org/2000/svg"
@@ -149,14 +149,14 @@ export function MenuBar({ links, currentPath }: any) {
 											</g>
 										</svg>
 									</div>
-									<p className="text-sm leading-tight text-muted-foreground text-left">
+									<p className="leading-tight text-muted-foreground text-center">
 										<span className="text-primary-darker dark:text-primary">
 											Stand out
 										</span>{" "}
 										from competition!
 									</p>
-									<Separator className="my-2" />
-									<p className="transition-colors hover:text-primary-darker dark:hover:text-primary group">
+									<Separator className="my-1" />
+									<p className="text-[0.825rem] transition-colors hover:text-primary-darker dark:hover:text-primary group">
 										Select Industry
 										<svg
 											className="inline !w-[26px] !h-auto ml-2 fill-none"
@@ -170,13 +170,13 @@ export function MenuBar({ links, currentPath }: any) {
 												strokeLinejoin="round"></path>
 										</svg>
 									</p>
-									<div className="flex items-center gap-4">
+									<div className="flex items-center gap-3">
 										<Separator className="flex-1" />
-										<span className="text-muted-foreground">or</span>
+										<span className="text-xs text-muted-foreground">or</span>
 										<Separator className="flex-1" />
 									</div>
 									<div className="text-md leading-tight text-primary">
-										<Button variant="gradient">
+										<Button variant="gradient" className="rounded-[3px] text-xs h-auto !px-1 !py-1">
 											<a href="/contact" title="Become Eagle">
 												Become an Eagle
 											</a>
@@ -189,13 +189,13 @@ export function MenuBar({ links, currentPath }: any) {
 							return (
 								<li
 									key={ch.href + i}
-									className="row-span-1 flex place-content-center place-items-center w-full h-full">
+									className="row-span-1 flex place-content-center place-items-center w-full h-fit">
 									<NavigationMenuLink asChild>
 										<a
 											href={ch.href}
 											title={ch.label}
 											target="_blank"
-											className="w-full text-center flex flex-row items-center gap-x-2 select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-primary focus:bg-accent focus:text-accent-foreground"
+											className="w-full text-center flex flex-row items-center gap-x-2 select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-primary focus:bg-accent focus:text-accent-foreground"
 											// {ch.description}
 										>
 											{ch.svg && (
@@ -210,9 +210,11 @@ export function MenuBar({ links, currentPath }: any) {
 											<div className="text-xs font-medium leading-none">
 												{ch.label}
 											</div>
-											<p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-												{ch.description}
-											</p>
+											{ch.description && (
+												<p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
+													{ch.description}
+												</p>
+											)}
 										</a>
 									</NavigationMenuLink>
 								</li>
