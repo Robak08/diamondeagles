@@ -20,11 +20,11 @@ export function MenuBar({ links, currentPath }: any) {
 					{link.label}
 				</NavigationMenuTrigger>
 				<NavigationMenuContent>
-					<ul className="grid gap-x-3 gap-y-1 p-2 md:p-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[1fr_.75fr_.75fr]">
-						<li className="row-span-5 text-center">
+					<div className="grid gap-x-3 gap-y-1 p-2 md:p-2 md:w-[420px] lg:w-[500px] lg:grid-cols-[1fr_1.75fr]">
+						<div className="text-center">
 							<NavigationMenuLink asChild>
 								<div className="flex h-full w-full select-none flex-col justify-start rounded-md border border-border/80 gap-2 bg-gradient-to-br from-muted/40 to-muted/60 dark:from-muted-60 dark:to-muted/90 px-4 py-3 no-underline outline-none focus:shadow-md">
-									<div className="w-full px-4 py-2">
+									<div className="w-full px-10 py-6 lg:px-4 lg:py-2">
 										<svg
 											className="!w-full !h-full fill-current"
 											xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +176,9 @@ export function MenuBar({ links, currentPath }: any) {
 										<Separator className="flex-1" />
 									</div>
 									<div className="text-md leading-tight text-primary">
-										<Button variant="gradient" className="rounded-[3px] text-xs h-auto !px-1 !py-1">
+										<Button
+											variant="gradient"
+											className="rounded-[3px] text-xs h-auto !px-1 !py-1">
 											<a href="/contact" title="Become Eagle">
 												Become an Eagle
 											</a>
@@ -184,43 +186,45 @@ export function MenuBar({ links, currentPath }: any) {
 									</div>
 								</div>
 							</NavigationMenuLink>
-						</li>
-						{link.children.map((ch: any, i: number) => {
-							return (
-								<li
-									key={ch.href + i}
-									className="row-span-1 flex place-content-center place-items-center w-full h-fit">
-									<NavigationMenuLink asChild>
-										<a
-											href={ch.href}
-											title={ch.label}
-											target="_blank"
-											className="w-full text-center flex flex-row items-center gap-x-2 select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-primary focus:bg-accent focus:text-accent-foreground"
-											// {ch.description}
-										>
-											{ch.svg && (
-												<SVG
-													src={ch.svg}
-													className="!w-[1.325rem] !h-[1.325rem] text-foreground"
-													// width={128}
-													// height="auto"
-													title={ch.label}
-												/>
-											)}
-											<div className="text-xs font-medium leading-none">
-												{ch.label}
-											</div>
-											{ch.description && (
-												<p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-													{ch.description}
-												</p>
-											)}
-										</a>
-									</NavigationMenuLink>
-								</li>
-							);
-						})}
-					</ul>
+						</div>
+						<ul className="grid grid-cols-2 w-full items-center justify-center">
+							{link.children.map((ch: any, i: number) => {
+								return (
+									<li
+										key={ch.href + i}
+										className="row-span-1 flex place-content-center place-items-center w-full h-fit">
+										<NavigationMenuLink asChild>
+											<a
+												href={ch.href}
+												title={ch.label}
+												target="_blank"
+												className="w-full text-center flex flex-row items-center gap-x-2 select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-primary focus:bg-accent focus:text-accent-foreground"
+												// {ch.description}
+											>
+												{ch.svg && (
+													<SVG
+														src={ch.svg}
+														className="!w-[1.325rem] !h-[1.325rem] text-foreground"
+														// width={128}
+														// height="auto"
+														title={ch.label}
+													/>
+												)}
+												<div className="text-sm font-medium leading-none">
+													{ch.label}
+												</div>
+												{ch.description && (
+													<p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
+														{ch.description}
+													</p>
+												)}
+											</a>
+										</NavigationMenuLink>
+									</li>
+								);
+							})}
+						</ul>
+					</div>
 				</NavigationMenuContent>
 			</NavigationMenuItem>
 		) : (
