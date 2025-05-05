@@ -1,7 +1,61 @@
 ---
+
 ---
 
 <section id="about">
-    ABOUT SECTION
-
+	<div class="grid gap-14 lg:grid-cols-4 xl:grid-cols-5">
+		<div class="md:col-span-2 xl:col-span-3">
+			<h2 class="mb-10 text-4xl font-medium">
+				Recognizing Excellence. Elevating Leaders.
+			</h2>
+			<p>
+				Diamond Eagles USA honors the top-performing businesses across the
+				country—those who consistently deliver exceptional quality, drive
+				growth, and lead with integrity. Each year, only a select few companies
+				are chosen as regional leaders, earning the prestigious Eagle award for
+				their standout achievements and commitment to excellence.
+			</p>
+			<p>
+				Our mission is to help customers confidently choose the best local
+				providers while empowering businesses to boost recognition, attract more
+				customers, and strengthen their brand image. By joining the ranks of
+				Diamond Eagles, companies gain a powerful edge—confirmation of their
+				quality, increased market visibility, and a mark of trust that sets them
+				apart from the competition.
+			</p>
+			<div class="mt-6 grid grid-cols-2 gap-6 text-center">
+				<div
+					class="flex flex-col items-center justify-center gap-2 rounded-xl border bg-background p-6"
+				>
+					<span class="text-2xl md:text-4xl">2024</span>
+					<span class="text-sm text-muted-foreground md:text-lg">Launched</span>
+				</div>
+				<div
+					class="flex flex-col items-center justify-center gap-2 rounded-xl border bg-background p-6"
+				>
+					<span class="text-2xl md:text-4xl">$2.2M</span><span
+						class="text-sm text-muted-foreground md:text-lg"
+						>Pre-Seed Round</span
+					>
+				</div>
+			</div>
+		</div>
+		<div class="placeholder">PLACEHOLDER</div>
+		<!-- <img
+			src=""
+			alt="placeholder"
+			class="rounded-xl md:col-span-2 bg-muted/50"
+		/> -->
+	</div>
 </section>
+
+<style lang="postcss">
+@reference '@styles/app.css';
+p {
+    @appyly text-lg;
+}
+.placeholder {
+    @apply rounded-xl md:col-span-2 w-full aspect-3/2 bg-muted/50 shadow-sm;
+    @apply flex justify-center items-center text-2xl lg:text-4xl font-semibold text-muted-foreground;
+}
+</style>
