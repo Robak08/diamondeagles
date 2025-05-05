@@ -1,0 +1,43 @@
+---
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+// import { BanIcon, MoreHorizontalIcon } from "lucide-react";
+// import { motion, AnimatePresence } from "framer-motion";
+
+const followers = [
+	{ username: "jane_doe", fullName: "Jane Doe" },
+	{ username: "tech_guru", fullName: "Alex Thompson" },
+	{ username: "nature_lover", fullName: "Emma Green" },
+	{ username: "photogirl", fullName: "Sophia Martinez" },
+	{ username: "code_master", fullName: "Liam Patel" },
+];
+
+const following = [
+	{ username: "startup_guy", fullName: "James Lee" },
+	{ username: "design_dreamer", fullName: "Mia Wilson" },
+	{ username: "art_addict", fullName: "Benjamin White" },
+	{ username: "web_wizard", fullName: "Lucas Nguyen" },
+	{ username: "health_nut", fullName: "Ella Singh" },
+];
+---
+
+<Tabs defaultValue="followers" className="max-w-xs w-full">
+	<TabsList className="w-full grid grid-cols-2">
+		<TabsTrigger value="followers">Followers</TabsTrigger>
+		<TabsTrigger value="following">Following</TabsTrigger>
+	</TabsList>
+
+	<div class="mt-2 p-4 border rounded-md">
+		<TabsContent value="followers">
+			<!-- <UserList users={followers} /> -->xxxx
+		</TabsContent>
+		<TabsContent value="following">
+			<!-- <UserList users={following} /> -->xxxxx
+		</TabsContent>
+	</div>
+</Tabs>
+
+<style lang="postcss">
+    @reference '@styles/app.css';
+
+</style>

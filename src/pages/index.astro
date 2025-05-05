@@ -3,6 +3,8 @@ import Layout from "@layouts/Layout.astro";
 import HeroSection from "@components/Sections/HeroSection.astro";
 import StatsSection from "@components/Sections/StatsSection.astro";
 import AboutSection from "@components/Sections/AboutSection.astro";
+// import WhatWeDoSection from "@components/Sections/WhatWeDoSection.astro";
+// import WhatWeDoSection from "@components/Sections/WhatWeDoSection.tsx";
 ---
 
 <Layout full>
@@ -10,5 +12,8 @@ import AboutSection from "@components/Sections/AboutSection.astro";
 	<StatsSection />
 	<div class="container">
 		<AboutSection />
+		<!-- <div class="w-full flex flex-rows justify-center my-10 md:my-16 lg:my-24">
+			<WhatWeDoSection client:visible />
+		</div> -->
 	</div>
 </Layout>
