@@ -1,0 +1,136 @@
+---
+import { listing } from "@assets/api.json";
+
+import { Badge } from "@/components/ui/badge";
+const catArray: string[] = [];
+// GET CATEGORIES FROM LISTING
+for (const item of listing) {
+	if (item.main_category === "") {
+		console.log("FIRMA Z PUSTĄ KATEGORIĄ", item.id, "___", item.name);
+		continue;
+	}
+	if (!catArray.find((c) => c === item.main_category))
+		catArray.push(item.main_category);
+}
+console.log(catArray);
+// const categoriesArray = ['Gastronomy', "Health", "Services", "Beauty", "Trade", 'Automotive and transport'];
+const filterListingByCategory = (cat: string | null) => {
+	if (cat === null) return listing;
+	return listing.filter((i) => i.main_category === cat);
+};
+
+let filteredListing = filterListingByCategory(null);
+
+// TODO DO it in svelte
+---
+
+<script define:vars={{ listing }}>
+	const filterListingByCategory = (cat) => {
+		if (cat === null) return listing;
+		return listing.filter((i) => i.main_category === cat);
+	};
+	// Find all buttons with the `alert` class on the page.
+	const filterBadges = document.querySelectorAll(".badge-filter");
+	// Handle clicks on each button.
+	filterBadges.forEach((button) => {
+		console.log(button);
+		button.addEventListener("click", () => {
+			filterListingByCategory(button.id);
+		});
+	});
+</script>
+
+<div class="ranking-wrap">
+	<div class="info">
+		<div>
+			<span class="label">Items: </span>
+			{filteredListing.length} ({listing.length})
+		</div>
+		<div class="categories-wrap">
+			<span class="label">Categories: {catArray.length} </span>
+			{
+				catArray.map((cat) => (
+					<Badge
+						id={cat}
+						variant="outline"
+						className="badge-filter select-none cursor-pointer hover:bg-gradient transition-colors">
+						{cat}
+					</Badge>
+				))
+			}
+		</div>
+	</div>
+	<ul>
+		{
+			filteredListing.map(
+				(item, index) =>
+					index < 100 && (
+						<li>
+							<h2>
+								<span class="label">Name: </span>
+								{item.name}
+							</h2>
+							<div>
+								<span class="label">Category: </span> {item.main_category}
+							</div>
+							<div>
+								<span class="label">Total reviews: </span> {item.total_reviews}
+							</div>
+							<div>
+								<span class="label">Score: </span> {item.score}
+							</div>
+							<div class="my-1">
+								<div class="">
+									<span class="label">Address: </span> {item.address}
+								</div>
+								<div class="">
+									<span class="label">Phone: </span> {item.phone}
+								</div>
+								{item.website && (
+									<div class="">
+										<span class="label">Website: </span>{" "}
+										<a
+											href={item.website}
+											target="_blank"
+											rel="noreferrer nofollower"
+											title={item.name}>
+											Link
+										</a>
+									</div>
+								)}
+							</div>
+						</li>
+					)
+			)
+		}
+	</ul>
+</div>
+
+<style lang="postcss">
+    @reference '@styles/app.css';
+    .ranking-wrap {
+        @apply mt-10 lg:mt-20 p-2;
+        .info {
+            @apply my-4 p-2 bg-muted rounded-lg shadow;
+            @apply flex flex-col items-center justify-center gap-2;
+            .categories-wrap {
+                @apply flex gap-x-2;
+            }
+        }
+        ul {
+            @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-4;
+            li {
+                @apply border-muted bg-muted/50 text-foreground;
+                @apply flex flex-col gap-1;
+                @apply p-3 text-sm;
+                .label {
+                    @apply text-muted-foreground text-xs;
+                }
+                a {
+                    @apply underline hover:text-primary;
+                }
+            }
+        }
+    }
+
+</style>

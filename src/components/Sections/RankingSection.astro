@@ -1,0 +1,55 @@
+---
+import { Badge } from "@/components/ui/badge";
+// import Ranking from "@components/Ranking.astro";
+---
+
+<section id="ranking">
+	<div class="max-w-xl my-4 px-8 lg:px-0 mx-auto text-center">
+		<Badge variant="outline" className="select-none"
+			>🏅 Greatness showcased</Badge
+		>
+		<h1
+			class="mt-6 mb-3 font-medium text-balance text-3xl sm:text-5xl md:text-6xl"
+		>
+			<span class="bg-gradient-text">Discover winners</span>
+		</h1>
+	</div>
+	<div class="lg:mt-10 xl:mt-16">
+		<div class="alert">
+			<p>
+				Every winner showcased below represents a business that has set the gold
+				standard in delivering exceptional products or services. These companies
+				have earned their place through unwavering dedication to quality, backed
+				by customer reviews that speak volumes.
+			</p>
+			<p>
+				With an average online rating of no less than 8.0 and a minimum of 100
+				customer reviews, they’ve proven their commitment to excellence time and
+				time again. This is where customer satisfaction meets outstanding
+				performance.
+			</p>
+			<p class="font-semibold !text-foreground">
+				Are you ready to discover the best in the business?
+			</p>
+		</div>
+		<!-- <Ranking /> -->
+	</div>
+</section>
+
+<style lang="postcss">
+    @reference '@styles/app.css';
+    #ranking {
+        @apply py-8 md:py-12 lg:py-16 xl:py-20 2xl:py-24 mt-10;
+        p {
+            @apply text-lg;
+        }
+        .alert {
+            @apply p-6 lg:p-8 xl:p-10;
+            @apply bg-muted/50 border border-muted/50 rounded-lg shadow;
+            @apply max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto;
+            p {
+                @apply text-sm lg:text-sm text-center text-muted-foreground;
+            }
+        }
+    }
+</style>
