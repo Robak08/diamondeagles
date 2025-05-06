@@ -1,0 +1,29 @@
+---
+import { Badge } from "@/components/ui/badge";
+
+import { HowItWorksTabs } from "@components/HowItWorksTabs.tsx";
+
+// TODO button to go through tabs ? visible only on lg+
+---
+
+<section id="howitworks">
+	<div class="max-w-xl my-4 px-8 lg:px-0 mx-auto text-center">
+		<Badge variant="outline" className="select-none">🚩 Our process</Badge>
+		<h1 class="mt-6 mb-3 text-2xl font-medium text-balance md:text-4xl">
+			How does it work<span class="bg-gradient-text">?</span>
+		</h1>
+	</div>
+	<div class="lg:mt-10 xl:mt-16">
+		<HowItWorksTabs client:visible />
+	</div>
+</section>
+
+<style lang="postcss">
+    @reference '@styles/app.css';
+    #howitworks {
+        @apply py-8 md:py-12 lg:py-16 xl:py-20 2xl:py-24 mt-10 lg:mt-16 xl:mt-20;
+        p {
+            @apply text-lg;
+        }
+    }
+</style>

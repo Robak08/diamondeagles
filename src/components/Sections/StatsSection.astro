@@ -5,7 +5,7 @@ import { Flame, FileSearch, ChartNoAxesCombined } from "@lucide/astro";
 ---
 
 <section class="stats-wrap">
-	<div class="stats-card">
+	<div class="stats-card" title="593,504 evaluated companies">
 		<StatCard
 			stat="593,504"
 			text="evaluated companies"
@@ -15,7 +15,7 @@ import { Flame, FileSearch, ChartNoAxesCombined } from "@lucide/astro";
 			<ChartNoAxesCombined size="36" slot="icon" />
 		</StatCard>
 	</div>
-	<div class="stats-card">
+	<div class="stats-card" title="293,482 customer ratings">
 		<StatCard
 			stat="293,482"
 			text="customer ratings"
@@ -25,7 +25,7 @@ import { Flame, FileSearch, ChartNoAxesCombined } from "@lucide/astro";
 			<Flame size="36" slot="icon" />
 		</StatCard>
 	</div>
-	<div class="stats-card">
+	<div class="stats-card" title="393,504 reviewed pages">
 		<StatCard stat="393,504" text="reviewed pages" duration={4200} client:load>
 			<FileSearch size="36" slot="icon" />
 		</StatCard>

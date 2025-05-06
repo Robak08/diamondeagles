@@ -129,6 +129,13 @@ body {
 	padding-inline: 1rem;
 }
 
+@utility bg-gradient {
+	@apply bg-linear-to-br from-primary to-primary-darker;
+}
+@utility bg-gradient-text {
+	@apply bg-gradient-to-tr from-primary to-primary-darker bg-clip-text text-transparent;
+}
+
 @layer base {
 	* {
 		@apply border-border outline-ring/50;
@@ -138,8 +145,11 @@ body {
 	}
 	.container {
 		p {
-			@apply my-4 md:my-6;
+			@apply my-4 md:my-6 lg:my-8 first:mt-0 md:first:mt-0 lg:first:mt-0;
 			@apply text-base sm:text-lg xl:text-xl;
+			& + p {
+				@apply !mt-0;
+			}
 		}
 	}
 
@@ -155,5 +165,14 @@ body {
 				@apply !text-lg;
 			}
 		}
+	}
+
+	.gradient-bg {
+		@apply bg-linear-to-br from-primary to-primary-darker;
+	}
+
+	.placeholder {
+		@apply rounded-xl md:col-span-2 w-full h-full bg-muted/50 shadow-sm;
+		@apply flex justify-center items-center text-2xl lg:text-3xl font-semibold text-muted-foreground;
 	}
 }
