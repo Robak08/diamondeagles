@@ -3,7 +3,7 @@ import Logo from "./Logo.svelte";
 import { MenuBar } from "@components/MenuBar.tsx";
 import { MobileMenu } from "@components/MobileMenu.tsx";
 // import MobileNav from "@components/MobileNav.astro";
-import ThemeToggle from "@components/ThemeToggle.astro";
+import { ThemeToggle } from "@components/ThemeToggle.tsx";
 import FacebookButton from "@components/Socials/FacebookButton.astro";
 import InstagramButton from "@components/Socials/InstagramButton.astro";
 const currentPath = Astro.url.pathname;
@@ -19,20 +19,21 @@ mobileLinks = [...mobileLinks, ...footerLinks];
 		<Logo header />
 	</div>
 	<div class="menu-horizontal">
-		<MenuBar client:load links={navLinks} {currentPath} />
+		<!-- 768px+ -->
+		<MenuBar client:media="(min-width: 48rem)" links={navLinks} {currentPath} />
 		<InstagramButton />
 		<FacebookButton />
-		<ThemeToggle />
+		<ThemeToggle client:media="(min-width: 48rem)" />
 	</div>
 	<div class="menu-mobile">
+		<!-- 768px- -->
 		<InstagramButton />
 		<FacebookButton />
-		<!-- TODO add dropdown for industries   {industriesLinks} -->
-		<!-- TODO migrate MobileMenu to Astro component -->
-		<MobileMenu client:load links={mobileLinks} {currentPath}>
-			<!-- <ThemeToggle /> -->
-		</MobileMenu>
-		<!-- <MobileNav links={mobileLinks} {currentPath} /> -->
+		<MobileMenu
+			client:media="(max-width: 48rem)"
+			links={mobileLinks}
+			{currentPath}
+		/>
 	</div>
 </div>
 

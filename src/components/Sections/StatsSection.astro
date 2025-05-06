@@ -10,7 +10,7 @@ import { Flame, FileSearch, ChartNoAxesCombined } from "@lucide/astro";
 			stat="593,504"
 			text="evaluated companies"
 			duration={3500}
-			client:load
+			client:visible
 		>
 			<ChartNoAxesCombined size="36" slot="icon" />
 		</StatCard>
@@ -20,13 +20,13 @@ import { Flame, FileSearch, ChartNoAxesCombined } from "@lucide/astro";
 			stat="293,482"
 			text="customer ratings"
 			duration={2800}
-			client:load
+			client:visible
 		>
 			<Flame size="36" slot="icon" />
 		</StatCard>
 	</div>
 	<div class="stats-card" title="393,504 reviewed pages">
-		<StatCard stat="393,504" text="reviewed pages" duration={4200} client:load>
+		<StatCard stat="393,504" text="reviewed pages" duration={4200} client:visible>
 			<FileSearch size="36" slot="icon" />
 		</StatCard>
 	</div>

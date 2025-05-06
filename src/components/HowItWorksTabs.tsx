@@ -85,7 +85,7 @@ export function HowItWorksTabs() {
 								<span className="flex size-7 relative z-1 shrink-0 items-center justify-center rounded-full border bg-muted lg:bg-background font-mono text-xs font-medium lg:group-data-[state=active]:bg-gradient lg:group-data-[state=active]:text-background lg:group-data-[state=active]:font-semibold lg:group-data-[state=active]:ring lg:group-data-[state=active]:ring-muted-foreground/40">
 									{index + 1}
 								</span>
-								<span className="h-full w-px bg-input lg:hidden"></span>
+								{/* <span className="h-full w-px bg-input lg:hidden"></span> */}
 								<div>
 									<h3 className="mb-1 font-medium lg:mt-4 text-base">
 										{title}

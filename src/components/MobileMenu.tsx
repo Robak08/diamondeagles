@@ -22,15 +22,13 @@ import {
 import { Button } from "./ui/button";
 // import { Separator } from "@/components/ui/separator"
 import { X, SquareMenu } from "lucide-react";
+import { ThemeToggle } from "@components/ThemeToggle.tsx";
 
 // TODO hightlight current route
 // TODO add socials + INDUSTRIES ? + CONTACT INFO ?
 
-export function MobileMenu({ links, currentPath, className, children }: any) {
-	// console.log("MobileMenu", children);
+export function MobileMenu({ links, currentPath, className }: any) {
 	const [open, setOpen] = React.useState(false);
-
-	// console.log(children);
 
 	const listItems = links.map((link: any, index: number) => (
 		<NavigationMenuItem key={link.href + index}>
@@ -68,7 +66,9 @@ export function MobileMenu({ links, currentPath, className, children }: any) {
 						<NavigationMenuList>{listItems}</NavigationMenuList>
 					</NavigationMenu>
 				</div>
-				<DrawerFooter>{children}</DrawerFooter>
+				<DrawerFooter>
+					<ThemeToggle />
+				</DrawerFooter>
 			</DrawerContent>
 		</Drawer>
 	);
