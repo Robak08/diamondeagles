@@ -1,5 +1,5 @@
 import { industries } from '@assets/industries.json';
-const menuIndustriesArray = industries.map(item => {
+export const industriesArray = industries.map(item => {
 	const itemObject = {
 		href: item.href,
 		label: item.label,
@@ -21,7 +21,7 @@ export const navLinks: {
 		{
 			label: "Industries",
 			href: "/industries",
-			children: menuIndustriesArray
+			children: industriesArray
 			// [
 			// 	{ label: 'Gastronomy', href: '#', description: null },
 			// 	{ label: 'Retail', href: '#', description: null },

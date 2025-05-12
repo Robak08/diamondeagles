@@ -1,0 +1,81 @@
+---
+import RankingCardCategory from "@components/Ranking/RankingCardCategory.astro";
+import RankingCardAddress from "@components/Ranking/RankingCardAddress.astro";
+import RankingCardPhone from "@components/Ranking/RankingCardPhone.astro";
+import RankingCardWebsite from "@components/Ranking/RankingCardWebsite.astro";
+
+import { ExternalLink } from "@lucide/astro";
+import { Picture } from "astro:assets";
+const { item, category } = Astro.props;
+---
+
+<div class="item-wrap">
+	<div class="item-img">
+		{
+			item.thumbnail && (
+				<Picture
+					src={
+						"https://diamondeaglesusa.com/wp-content/uploads/2025/01/" +
+						item.thumbnail +
+						".jpg"
+					}
+					width="220"
+					height="160"
+					formats={["avif", "webp"]}
+					alt={item.name}
+					class="object-cover w-full aspect-3/2 shadow"
+				/>
+			)
+		}
+		<div class="item-category">
+			{category && <RankingCardCategory category={category} />}
+		</div>
+	</div>
+	<div class="item-content">
+		<h2>{item.name}</h2>
+		<div>
+			<span class="label">Total reviews: </span>{" "}
+			{item.total_reviews}
+		</div>
+		{item.address && <RankingCardAddress address={item.address} />}
+		{item.phone && <RankingCardPhone phone={item.phone} name={item.name} />}
+		{
+			item.website && (
+				<RankingCardWebsite website={item.website} name={item.name} />
+			)
+		}
+		<div class="item-score">{item.score}</div>
+	</div>
+</div>
+
+<style lang="postcss">
+    @reference '@styles/app.css';
+    .item-wrap {
+		@apply flex flex-col items-center gap-y-4;
+		.item-img {
+			@apply relative bg-primary/5 rounded overflow-hidden;
+            @apply lg:min-w-[261px] lg:min-h-[174px];
+            @apply xl:min-w-[210px] xl:min-h-[140px];
+			.item-category {
+				@apply absolute bottom-1 left-1;
+			}
+		}
+		.item-content {
+			@apply flex flex-col gap-y-2;
+			h2 {
+				@apply font-medium text-lg;
+			}
+			.label {
+				@apply text-muted-foreground text-xs;
+			}
+			a {
+				@apply flex items-center hover:text-primary;
+			}
+			.item-score {
+				@apply absolute right-2 bottom-2;
+				@apply flex items-center justify-center;
+				@apply w-14 h-10 p-1 rounded bg-primary/20 text-white text-xl font-medium;
+			}
+		}
+	}
+</style>

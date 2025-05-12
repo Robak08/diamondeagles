@@ -1,0 +1,9 @@
+---
+const { phone, name } = Astro.props;
+
+import {PhoneOutgoing} from '@lucide/astro'
+---
+
+<a href={'tel:'+phone} target="_self" rel="noreferrer nofollower" title={name}>
+	<PhoneOutgoing size="10" class="inline-block mr-1" /> {phone}
+</a>

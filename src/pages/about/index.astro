@@ -2,13 +2,16 @@
 import Layout from "@layouts/Layout.astro";
 import PageHeader from "@components/PageHeader.astro";
 import PageContent from "@components/PageContent.astro";
-``;
+import AboutSection from "@components/Sections/AboutSection.astro";
+import HowItWorks from "@components/Sections/HowItWorks.astro";
 const metaTitle = "About Eagles | Diamond Eagles USA";
 const metaDescription = "";
 const metaKeywords = "";
 ---
 
 <Layout {metaTitle}>
-	<PageHeader title="About Eagles" />
+	<PageHeader>About <span class="bg-gradient-text">Eagles</span></PageHeader>
 	<PageContent> ABOUT PAGE CONTENT </PageContent>
+	<AboutSection />
+	<HowItWorks />
 </Layout>

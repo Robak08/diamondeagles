@@ -1,9 +1,7 @@
----
-const { title } = Astro.props;
----
-
 <div class="dark:prose-invert prose-sm md:prose lg:prose-lg; header">
-	<h1>{title}</h1>
+	<h1>
+		<slot />
+	</h1>
 </div>
 
 <style lang="postcss">

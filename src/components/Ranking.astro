@@ -1,7 +1,10 @@
 ---
 import { listing } from "@assets/api.json";
+import { industriesArray } from "@lib/links";
 
 import { Badge } from "@/components/ui/badge";
+import RankingCard from "@components/Ranking/RankingCard.astro";
+
 const catArray: string[] = [];
 // GET CATEGORIES FROM LISTING
 for (const item of listing) {
@@ -12,14 +15,15 @@ for (const item of listing) {
 	if (!catArray.find((c) => c === item.main_category))
 		catArray.push(item.main_category);
 }
-console.log(catArray);
+// console.log(catArray);
 // const categoriesArray = ['Gastronomy', "Health", "Services", "Beauty", "Trade", 'Automotive and transport'];
 const filterListingByCategory = (cat: string | null) => {
 	if (cat === null) return listing;
 	return listing.filter((i) => i.main_category === cat);
 };
 
-let filteredListing = filterListingByCategory(null);
+let filteredListing = listing.sort((a, b) => (a.score > b.score ? -1 : a.score === b.score ? 0 : 1));
+filteredListing = filterListingByCategory(null);
 
 // TODO DO it in svelte
 ---
@@ -46,8 +50,10 @@ let filteredListing = filterListingByCategory(null);
 			<span class="label">Items: </span>
 			{filteredListing.length} ({listing.length})
 		</div>
-		<div class="categories-wrap">
+		<div>
 			<span class="label">Categories: {catArray.length} </span>
+		</div>
+		<div class="categories-wrap">
 			{
 				catArray.map((cat) => (
 					<Badge
@@ -64,41 +70,16 @@ let filteredListing = filterListingByCategory(null);
 		{
 			filteredListing.map(
 				(item, index) =>
-					index < 100 && (
+					index < 12 && (
 						<li>
-							<h2>
-								<span class="label">Name: </span>
-								{item.name}
-							</h2>
-							<div>
-								<span class="label">Category: </span> {item.main_category}
-							</div>
-							<div>
-								<span class="label">Total reviews: </span> {item.total_reviews}
-							</div>
-							<div>
-								<span class="label">Score: </span> {item.score}
-							</div>
-							<div class="my-1">
-								<div class="">
-									<span class="label">Address: </span> {item.address}
-								</div>
-								<div class="">
-									<span class="label">Phone: </span> {item.phone}
-								</div>
-								{item.website && (
-									<div class="">
-										<span class="label">Website: </span>{" "}
-										<a
-											href={item.website}
-											target="_blank"
-											rel="noreferrer nofollower"
-											title={item.name}>
-											Link
-										</a>
-									</div>
+							<RankingCard
+								item={item}
+								category={industriesArray.find((it) =>
+									item.main_category
+										.toLowerCase()
+										.includes(it.label.toLowerCase())
 								)}
-							</div>
+							/>
 						</li>
 					)
 			)
@@ -118,17 +99,12 @@ let filteredListing = filterListingByCategory(null);
             }
         }
         ul {
-            @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-4;
+            @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6;
+			@apply gap-6 lg:gap-4 xl:gap-8;
             li {
                 @apply border-muted bg-muted/50 text-foreground;
-                @apply flex flex-col gap-1;
+                @apply flex flex-col gap-1 relative;
                 @apply p-3 text-sm;
-                .label {
-                    @apply text-muted-foreground text-xs;
-                }
-                a {
-                    @apply underline hover:text-primary;
-                }
             }
         }
     }
