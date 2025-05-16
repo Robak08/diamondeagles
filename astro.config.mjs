@@ -9,7 +9,10 @@ import react from "@astrojs/react";
 export default defineConfig({
 	integrations: [react(), svelte(), sitemap()],
 	output: "static",
-	prefetch: true,
+	prefetch: {
+		defaultStrategy: "hover",
+		prefetchAll: true,
+	},
 	// adapter: vercel(),
 	vite: {
 		plugins: [tailwindcss()],

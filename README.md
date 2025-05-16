@@ -21,3 +21,11 @@
  - [ ] 500 error
  - [ ] Privacy Policy
  - [ ] /[slug] Company Page (maybe in modal?)
+
+
+ Ścieżki:
+Kategorie: https://strapi.diamondeaglesusa.com/api/company_categories
+Firmy: https://strapi.diamondeaglesusa.com/api/company-lists
+Formularze: https://strapi.diamondeaglesusa.com/api/emails 
+
+IMGS URL https://api.diamondeaglesusa.com/img/{thumbnail_id}.jpg
