@@ -8,7 +8,7 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
 	integrations: [react(), svelte(), sitemap()],
-	output: "static",
+	output: "server",
 	prefetch: {
 		defaultStrategy: "hover",
 		prefetchAll: true,

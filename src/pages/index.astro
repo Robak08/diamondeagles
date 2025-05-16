@@ -8,8 +8,8 @@ import RankingSection from "@components/Sections/RankingSection.astro";
 // import WhatWeDoSection from "@components/Sections/WhatWeDoSection.astro";
 // import WhatWeDoSection from "@components/Sections/WhatWeDoSection.tsx";
 
-const configTitle = Astro.locals.website.title;
-const configDescription = Astro.locals.website.description;
+const configTitle = Astro.locals?.website?.title;
+const configDescription = Astro.locals?.website?.description;
 
 console.log(configTitle, configDescription);
 ---
