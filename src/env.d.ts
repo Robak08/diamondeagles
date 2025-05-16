@@ -10,7 +10,7 @@ interface ImportMeta {
 
 declare namespace App {
   interface Locals {
-    readonly website: {
+    website: {
       title: string;
       description: string;
       heroSloga: string;
