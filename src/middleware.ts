@@ -17,6 +17,6 @@ export const onRequest = defineMiddleware((context, next) => {
         context.locals.website.description = "Opis dla vercela"
     }
 
-    // console.log('onRequest context', context.url, context.url.hostname)
+    console.log('onRequest context', context.url, context.url.hostname)
     return next();
 });
