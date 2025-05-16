@@ -15,11 +15,11 @@ export default defineConfig({
 		prefetchAll: true,
 	},
 	adapter: vercel({
+		edgeMiddleware: true,
+		isr: true,
 		// webAnalytics: {
 		// 	enabled: true,
 		// },
-		// CHECK isr
-		// isr: true,
 		// imagesConfig: {
 		// 	sizes: [320, 640, 1280],
 		// },
