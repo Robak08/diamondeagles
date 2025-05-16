@@ -11,7 +11,7 @@ const { error } = Astro.props;
 
 <Layout>
 	<PageHeader>
-		<span class="bg-gradient-text">404</span>Error occured
+		<span class="bg-gradient-text inline-block mr-2">404</span>Error occured
 	</PageHeader>
 	<div>{error instanceof Error ? error.message : "Unknown error"}</div>
 </Layout>

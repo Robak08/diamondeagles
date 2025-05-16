@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import AnimatedNumber from "@/components/ui/animated-number";
 // import { useInView } from "motion/react";
 
@@ -13,9 +13,6 @@ export function StatCard({
 	duration: number;
 	icon?: any;
 }) {
-	// const ref = useRef(null);
-	// const isInView = useInView(ref);
-
 	const endNumber =
 		typeof stat === "string" ? Number(stat.replace(",", "")) : stat;
 

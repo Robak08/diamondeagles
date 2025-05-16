@@ -1,9 +1,8 @@
-import * as React from "react";
+import { useState } from "react";
 import {
 	Drawer,
 	DrawerClose,
 	DrawerContent,
-	DrawerDescription,
 	DrawerFooter,
 	DrawerHeader,
 	DrawerTitle,
@@ -11,16 +10,11 @@ import {
 } from "@/components/ui/drawer";
 import {
 	NavigationMenu,
-	NavigationMenuContent,
 	NavigationMenuItem,
 	NavigationMenuLink,
 	NavigationMenuList,
-	NavigationMenuTrigger,
-	// navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-// import { cn } from "@/lib/utils"
 import { Button } from "./ui/button";
-// import { Separator } from "@/components/ui/separator"
 import { X, SquareMenu } from "lucide-react";
 import { ThemeToggle } from "@components/ThemeToggle.tsx";
 
@@ -28,7 +22,7 @@ import { ThemeToggle } from "@components/ThemeToggle.tsx";
 // TODO add socials + INDUSTRIES ? + CONTACT INFO ?
 
 export function MobileMenu({ links, currentPath, className }: any) {
-	const [open, setOpen] = React.useState(false);
+	const [open, setOpen] = useState(false);
 
 	const listItems = links.map((link: any, index: number) => (
 		<NavigationMenuItem key={link.href + index}>
