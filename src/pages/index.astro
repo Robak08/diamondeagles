@@ -7,6 +7,11 @@ import HowItWorks from "@components/Sections/HowItWorks.astro";
 import RankingSection from "@components/Sections/RankingSection.astro";
 // import WhatWeDoSection from "@components/Sections/WhatWeDoSection.astro";
 // import WhatWeDoSection from "@components/Sections/WhatWeDoSection.tsx";
+
+const configTitle = Astro.locals.website.title;
+const configDescription = Astro.locals.website.description;
+
+console.log(configTitle, configDescription);
 ---
 
 <!--
@@ -16,8 +21,6 @@ import RankingSection from "@components/Sections/RankingSection.astro";
 <meta property="og:description" content="Welcome to my new Astro site!" />
 <meta property="og:image" content="https://www.example.com/_astro/seo-banner.BZD7kegZ.webp">
 <meta property="og:image:alt" content=""> -->
-
-
 <Layout full>
 	<HeroSection />
 	<StatsSection />

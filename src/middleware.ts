@@ -5,17 +5,14 @@ export const onRequest = defineMiddleware((context, next) => {
         get domain config files here
         set context based on domain
         use context in pages
-
     */
-    // switch (context.url.hostname) {
-    //     case 'https://':
-    //         console.log('MAIN WEBSITE')
-    //         break;
-    //     case 'https://xxx':
-    //         console.log('xxx WEBSITE')
-    //         break;
-    // }
+    switch (context.url.hostname) {
+        case 'diamondeagles.vercel.app':
+            context.locals.website.title = "Diamentowe Orzeły w juesej";
+            context.locals.website.description = "Opis dla vercela"
+            break;
+    }
 
-    console.log('onRequest context', context.url, context.url.hostname)
+    // console.log('onRequest context', context.url, context.url.hostname)
     return next();
 });
