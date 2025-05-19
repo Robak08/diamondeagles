@@ -14,7 +14,23 @@ mobileLinks = [...mobileLinks, ...footerLinks];
 // const industriesLinks = links.filter(link=>link.href === '/industries');
 ---
 
-<div class="navbar">
+<script>
+	// @ts-ignore
+	const navElClassList = document.getElementById("nav").classList;
+
+	window.onscroll = (e) => {
+		// console.log();
+		// @ts-ignore
+		if (e.srcElement.documentElement.scrollTop > 40) {
+			if (!navElClassList.contains("scrolled")) navElClassList.add("scrolled");
+		} else {
+			if (navElClassList.contains("scrolled"))
+				navElClassList.remove("scrolled");
+		}
+	};
+</script>
+
+<div id="nav" class="navbar">
 	<div class="flex-1">
 		<Logo header />
 	</div>
@@ -41,9 +57,13 @@ mobileLinks = [...mobileLinks, ...footerLinks];
 	@reference '@styles/app.css';
 	.navbar {
 		@apply z-10 sticky isolate top-0;
-		@apply shadow-sm rounded-lg;
-		@apply flex flex-row items-center m-4 p-2 md:px-4;
-		@apply dark:bg-zinc-900/80 bg-white/60 backdrop-blur-xs;
+		/* @apply shadow-sm rounded-lg m-4; */
+		@apply flex flex-row items-center p-2 md:px-4;
+		/* @apply dark:bg-zinc-900/80 bg-white/60 backdrop-blur-xs; */
+		@apply bg-transparent transition-colors;
+		&.scrolled {
+			@apply dark:bg-zinc-900/90 bg-white/90 backdrop-blur-xs;
+		}
 	}
 	.menu-horizontal {
 		@apply hidden md:flex flex-none flex-row items-center gap-2 z-3;

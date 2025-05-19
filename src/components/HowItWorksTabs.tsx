@@ -109,7 +109,7 @@ export function HowItWorksTabs() {
 					</TabsTrigger>
 				))}
 			</TabsList>
-			<div className="mt-10 hidden rounded-xl lg:border bg-muted/50 lg:bg-transparent p-6 lg:p-10 lg:block">
+			{/* <div className="mt-10 hidden rounded-xl lg:border bg-muted/50 lg:bg-transparent p-6 lg:p-10 lg:block">
 				{steps.map(
 					({ value, title, description, htmlDescription, image }, index) => (
 						<TabsContent key={value + "#" + index} value={value} title={title}>
@@ -126,7 +126,7 @@ export function HowItWorksTabs() {
 						</TabsContent>
 					)
 				)}
-			</div>
+			</div> */}
 		</Tabs>
 	);
 }

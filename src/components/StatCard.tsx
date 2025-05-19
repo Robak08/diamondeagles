@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import AnimatedNumber from "@/components/ui/animated-number";
+import { cn } from "@/lib/utils";
 // import { useInView } from "motion/react";
 
 export function StatCard({
@@ -17,24 +18,42 @@ export function StatCard({
 		typeof stat === "string" ? Number(stat.replace(",", "")) : stat;
 
 	const [currentNumber, setCurrentNumber] = useState(0);
+	const [iconClass, setIconClass] = useState("scale-90 opacity-85");
+	const [svgClass, setSvgClass] = useState("");
 
 	useEffect(() => {
 		// if (isInView)
 		setTimeout(() => {
 			setCurrentNumber(endNumber);
-		}, 200);
+			setSvgClass("animate-circle");
+		}, 100);
+		setTimeout(() => {
+			setIconClass("scale-[1.05] opacity-100");
+		}, 2200);
 		// }, [currentNumber, isInView]);
-	}, [currentNumber]);
+	}, [currentNumber, iconClass]);
 	return (
 		<div
 			// ref={ref}
 			data-slot="card"
-			className="bg-muted/50 text-card-foreground flex flex-col gap-6 shadow-sm rounded-3xl border-2 p-4 md:p-5 xl:p-8 transition hover:-translate-y-3 hover:border-primary m-4 sm:m-0">
+			className="stat-card-inner overflow-none">
 			<div className="block p-0">
 				<div className="flex flex-col items-center md:items-start gap-4">
-					<span className="relative flex justify-center items-center size-8 shrink-0 h-12 w-12 overflow-hidden rounded-full border">
+					<span className="relative flex justify-center items-center shrink-0 h-16 w-16 overflow-hidden rounded-full border-primary/20">
+						<svg className={`stat-card-svg ${svgClass}`} viewBox="0 0 60 60">
+							<circle
+								cx="30"
+								cy="30"
+								r="30"
+								strokeWidth="8"
+								fill="transparent"
+							/>
+						</svg>
 						{/* <slot name="icon" /> */}
-						{icon ? icon : ""}
+						<div
+							className={`stat-card-icon transition-all duration-[300ms] ease-in-out ${iconClass}`}>
+							{icon ? icon : ""}
+						</div>
 					</span>
 					<div
 						data-stat={stat}

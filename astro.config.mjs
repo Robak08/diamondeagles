@@ -3,17 +3,18 @@ import { defineConfig } from "astro/config";
 import svelte from "@astrojs/svelte";
 import tailwindcss from "@tailwindcss/vite";
 // import vercel from "@astrojs/vercel";
+import vercelStatic from "@astrojs/vercel/static";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
 	integrations: [react(), svelte(), sitemap()],
-	// output: "server",
 	output: "static",
 	prefetch: {
 		defaultStrategy: "hover",
 		prefetchAll: true,
 	},
+	adapter: vercelStatic({}),
 	// adapter: vercel({
 	// 	webAnalytics: {
 	// 		enabled: true,

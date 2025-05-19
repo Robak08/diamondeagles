@@ -16,7 +16,7 @@ export const navLinks: {
 }[] = [
 		{
 			label: "About Eagles",
-			href: "/about",
+			href: "/#about",
 		},
 		{
 			label: "Industries",

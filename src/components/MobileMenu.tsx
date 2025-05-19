@@ -24,10 +24,13 @@ import { ThemeToggle } from "@components/ThemeToggle.tsx";
 export function MobileMenu({ links, currentPath, className }: any) {
 	const [open, setOpen] = useState(false);
 
+	const closeDrawer = () => setOpen(false);
+
 	const listItems = links.map((link: any, index: number) => (
 		<NavigationMenuItem key={link.href + index}>
 			<NavigationMenuLink asChild>
 				<a
+					onClick={closeDrawer}
 					href={link.href}
 					title={link.label}
 					className={currentPath === link.href ? "text-primary" : ""}>

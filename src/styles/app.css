@@ -54,6 +54,14 @@ body {
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-ring: var(--sidebar-ring);
 	--color-primary-darker: oklch(0.705 0.213 47.604);
+	--text-md: 1.15rem;
+
+	--animate-circle: 2600ms circleFill ease-in-out reverse;
+	@keyframes circleFill {
+		to {
+			stroke-dashoffset: -190;
+		}
+	}
 }
 
 :root {
@@ -132,24 +140,34 @@ body {
 @utility bg-gradient {
 	@apply bg-linear-to-br from-primary to-primary-darker;
 }
+@utility bg-gradient-card {
+	@apply bg-linear-to-br from-primary/10 to-primary-darker/5;
+	@apply dark:from-primary/5 to-primary-darker/2
+}
 @utility bg-gradient-text {
 	@apply bg-gradient-to-tr from-primary to-primary-darker bg-clip-text text-transparent;
 }
 
 @layer base {
+	html {
+		@apply scroll-smooth;
+	}
 	* {
 		@apply border-border outline-ring/50;
 	}
 	body {
-		@apply bg-background text-foreground scroll-smooth;
+		@apply bg-background text-foreground;
 	}
 	.container {
 		p {
 			@apply my-4 md:my-6 lg:my-8 first:mt-0 md:first:mt-0 lg:first:mt-0 last:mb-0;
-			@apply text-base sm:text-lg xl:text-xl;
+			@apply text-md;
 			& + p {
 				@apply !mt-0;
 			}
+		}
+		h1 {
+			@apply mt-6 mb-3 font-semibold text-balance text-3xl sm:text-5xl md:text-6xl;
 		}
 	}
 
@@ -174,5 +192,33 @@ body {
 	.placeholder {
 		@apply rounded-xl md:col-span-2 w-full h-full bg-muted/50 shadow-sm;
 		@apply flex justify-center items-center text-2xl lg:text-3xl font-semibold text-muted-foreground;
+	}
+}
+
+/* @property --border-angle {
+	syntax: "<angle>";
+	inherits: true;
+	initial-value: 0turn;
+}
+@keyframes bg-spin {
+	to {
+		--border-angle: -1turn;
+	}
+} */
+
+.stat-card-inner {
+	@apply bg-gradient-card;
+	@apply shadow-lg border-primary/50 dark:border-primary/10;
+	@apply text-card-foreground flex flex-col gap-6 rounded-3xl border-2 p-4 md:p-5 xl:p-8 transition hover:-translate-y-2 m-4 sm:m-0;
+	@apply relative;
+	.stat-card-svg {
+		@apply h-full w-full absolute p-0 m-0 rotate-90;
+		@apply stroke-primary dark:stroke-primary/80;
+		--strokeLength: 190;
+		--strokeCalc: 0;
+		stroke-dasharray: var(--strokeLength);
+		stroke-dashoffset: var(--strokeCalc);
+		transition: stroke-dashoffset 750ms ease;
+		/* animation: 2600ms circleFill reverse; */
 	}
 }

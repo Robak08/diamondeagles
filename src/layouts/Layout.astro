@@ -56,7 +56,7 @@ const { metaTitle, metaDescription, metaKeywords, full } = Astro.props;
 	</head>
 	<body>
 		<Navbar />
-		<div class={full ? "" : "container"}>
+		<div class={full ? "relative overflow-hidden" : "container"}>
 			<slot />
 		</div>
 		<Footer />
