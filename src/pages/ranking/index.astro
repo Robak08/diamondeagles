@@ -1,0 +1,65 @@
+---
+import Layout from "@layouts/Layout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import Ranking from "@components/Ranking.svelte";
+// import PageContent from "@components/PageContent.astro";
+const metaTitle = "Ranking Eagles | Diamond Eagles USA";
+const metaDescription = "";
+const metaKeywords = "";
+
+import { categories, companies } from "@lib/strapi";
+
+const categoriesRes = await categories.find({
+	sort: "category_name",
+	populate: {
+		fields: ["*"],
+	},
+});
+
+/*
+
+*/
+
+const companiesRes = await companies.find({
+	sort: "score:desc,total_reviews:desc",
+	filters: { company_category: { category_name: { $eq: "Beauty" } } },
+	populate: {
+		company_category: {
+			fields: ["*"],
+		},
+	},
+	pagination: {
+		limit: 10,
+	},
+});
+/*
+    pagination: {
+        offset: 0,
+        limit: 1,
+    }
+
+    */
+// console.log("CATS", categoriesRes);
+// console.log("COMPANIES", companiesRes);
+---
+
+<Layout {metaTitle}>
+	<PageHeader>Ranking <span class="bg-gradient-text">Eagles</span></PageHeader>
+
+	<div class="ranking-wrap">
+		<Ranking
+			client:load
+			categories={categoriesRes.data}
+			companies={companiesRes.data}
+		/>
+	</div>
+</Layout>
+
+<style lang="postcss">
+	@reference '@styles/app.css';
+
+    .ranking-wrap {
+        @apply my-10 py-4;
+        @apply w-full h-full;
+    }
+</style>
