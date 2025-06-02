@@ -1,8 +1,8 @@
 ---
-export const prerender = false
 import Layout from "@layouts/Layout.astro";
 import PageHeader from "@components/PageHeader.astro";
 import Ranking from "@components/Ranking.svelte";
+
 // import PageContent from "@components/PageContent.astro";
 const metaTitle = "Ranking Eagles | Diamond Eagles USA";
 const metaDescription = "";
@@ -17,6 +17,8 @@ const categoriesRes = await categories.find({
 		fields: ["*"],
 	},
 });
+
+// TODO set category value based on ENV variable
 
 const companiesRes = await companies.find({
 	sort: "score:desc,total_reviews:desc",
@@ -291,9 +293,9 @@ const companiesRes = {
 			updatedAt: "2025-05-15T15:20:24.802Z",
 			publishedAt: "2025-05-15T15:20:24.809Z",
 			company_category: {
-				id: 2,
-				documentId: "bwuzevdnyq4o26htbdqbzao8",
-				category_name: "Trade",
+				id: 24,
+				documentId: "wzhh3t9svk8mekvhl9p8fuc8",
+				category_name: "Services",
 				createdAt: "2025-05-15T12:46:34.976Z",
 				updatedAt: "2025-05-15T12:46:34.976Z",
 				publishedAt: "2025-05-15T12:46:35.014Z",
@@ -315,9 +317,9 @@ const companiesRes = {
 			updatedAt: "2025-05-15T14:38:19.529Z",
 			publishedAt: "2025-05-15T14:38:19.535Z",
 			company_category: {
-				id: 2,
-				documentId: "bwuzevdnyq4o26htbdqbzao8",
-				category_name: "Trade",
+				id: 24,
+				documentId: "wzhh3t9svk8mekvhl9p8fuc8",
+				category_name: "Services",
 				createdAt: "2025-05-15T12:46:34.976Z",
 				updatedAt: "2025-05-15T12:46:34.976Z",
 				publishedAt: "2025-05-15T12:46:35.014Z",
@@ -377,13 +379,26 @@ const companiesRes = {
 ---
 
 <Layout {metaTitle}>
-	<PageHeader>Ranking <span class="bg-gradient-text">Eagles</span></PageHeader>
+	<!-- <PageHeader>Ranking <span class="bg-gradient-text">Eagles</span></PageHeader> -->
+	<!-- <div class="ranking-info">
+		<p>
+			Every winner showcased below represents a business that has set the gold
+			standard in delivering exceptional products or services. These companies
+			have earned their place through unwavering dedication to quality, backed
+			by customer reviews that speak volumes.
+		</p>
+		<p>
+			With an average online rating of no less than 8.0 and a minimum of 100
+			customer reviews, they’ve proven their commitment to excellence time and
+			time again. This is where customer satisfaction meets outstanding
+			performance.
+		</p>
+		<p class="font-semibold !text-foreground">
+			Are you ready to discover the best in the business?
+		</p>
+	</div> -->
 	<div class="ranking-wrap">
-		<Ranking
-			client:load
-			categories={categoriesRes.data}
-			companies={companiesRes}
-		/>
+		<Ranking client:load categories={categoriesRes.data} />
 	</div>
 </Layout>
 
@@ -393,5 +408,13 @@ const companiesRes = {
 		@apply my-10 py-4;
 		@apply w-full h-full;
 	}
+	 .ranking-info {
+            @apply p-6 lg:p-8 xl:p-10 my-4;
+            @apply bg-muted/50 border border-muted/50 rounded-lg shadow;
+            @apply max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto;
+            p {
+                @apply text-sm lg:text-sm text-center text-muted-foreground;
+            }
+        }
 
 </style>

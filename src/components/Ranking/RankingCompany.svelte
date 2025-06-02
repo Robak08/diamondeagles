@@ -22,11 +22,11 @@
 	} = $derived(company);
 
 	const rankingPlace =
-		pageNo === 0 && index === 0
+		pageNo === 1 && index === 0
 			? 1
-			: pageNo === 0 && index === 1
+			: pageNo === 1 && index === 1
 				? 2
-				: pageNo === 0 && index === 2
+				: pageNo === 1 && index === 2
 					? 3
 					: null;
 </script>
@@ -141,7 +141,7 @@
 
 		&.laureate {
 			.placement {
-				@apply bg-zinc-100 border-zinc-300 text-foreground;
+				@apply bg-slate-100 dark:bg-slate-700 border-slate-300 dark:border-slate-800 text-foreground;
 			}
 		}
 	}
