@@ -19,7 +19,7 @@
 		thumbnail_id,
 		score_details,
 		createdAt,
-	} = $state(company);
+	} = $derived(company);
 
 	const rankingPlace =
 		pageNo === 0 && index === 0

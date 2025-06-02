@@ -6,6 +6,7 @@ import { MobileMenu } from "@components/MobileMenu.tsx";
 import { ThemeToggle } from "@components/ThemeToggle.tsx";
 import FacebookButton from "@components/Socials/FacebookButton.astro";
 import InstagramButton from "@components/Socials/InstagramButton.astro";
+// @ts-ignore
 const currentPath = Astro.url.pathname;
 import { navLinks, footerLinks } from "@lib/links";
 
@@ -21,7 +22,7 @@ mobileLinks = [...mobileLinks, ...footerLinks];
 	window.onscroll = (e) => {
 		// console.log();
 		// @ts-ignore
-		if (e.srcElement.documentElement.scrollTop > 40) {
+		if (e.target.documentElement.scrollTop > 40) {
 			if (!navElClassList.contains("scrolled")) navElClassList.add("scrolled");
 		} else {
 			if (navElClassList.contains("scrolled"))

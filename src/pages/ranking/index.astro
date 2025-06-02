@@ -1,4 +1,5 @@
 ---
+export const prerender = false
 import Layout from "@layouts/Layout.astro";
 import PageHeader from "@components/PageHeader.astro";
 import Ranking from "@components/Ranking.svelte";
@@ -323,7 +324,7 @@ const companiesRes = {
 			},
 		},
 		{
-			score: 10,
+			score: 4.5,
 			total_reviews: 251,
 			id: 10971,
 			documentId: "b7xgt3o90tgl56p5n8jfm4wi",
@@ -347,7 +348,7 @@ const companiesRes = {
 			},
 		},
 		{
-			score: 10,
+			score: 2.8,
 			total_reviews: 246,
 			id: 8651,
 			documentId: "evo7wya7uiwne46d08ckhitc",
@@ -377,7 +378,6 @@ const companiesRes = {
 
 <Layout {metaTitle}>
 	<PageHeader>Ranking <span class="bg-gradient-text">Eagles</span></PageHeader>
-
 	<div class="ranking-wrap">
 		<Ranking
 			client:load
