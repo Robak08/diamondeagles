@@ -3,8 +3,8 @@ import Layout from "@layouts/Layout.astro";
 import PageHeader from "@components/PageHeader.astro";
 import PageContent from "@components/PageContent.astro";
 import { ContactForm } from "@/components/ContactForm";
-import { CopyText } from "@/components/CopyText";
-import { Separator } from "@/components/ui/separator";
+import CopyText from "@/components/CopyText.svelte";
+import { Separator } from "$lib/components/ui/separator/index.js";
 import { Mails, MapPin, Phone } from "lucide-react";
 
 const metaTitle = "Contact Eagles | Diamond Eagles USA";
@@ -26,10 +26,10 @@ const metaKeywords = "";
 				<div class="form-wrap">
 					<ContactForm client:load />
 				</div>
-				<Separator className="block lg:hidden gap-y-4" />
+				<Separator class="block lg:hidden gap-y-4" />
 				<Separator
 					orientation="vertical"
-					className="hidden lg:block absolute top-0 left-[56.5%]"
+					class="hidden lg:block absolute top-0 left-[56.5%]"
 				/>
 				<div class="info-wrap">
 					<div class="info-wrap">
@@ -47,7 +47,7 @@ const metaKeywords = "";
 								</span>
 							</div>
 						</div>
-						<!-- <Separator className="my-4 md:my-6 lg:my-10 sm:mx-auto !w-2/3" />
+						<!-- <Separator class="my-4 md:my-6 lg:my-10 sm:mx-auto !w-2/3" />
 						<div class="info-row">
 							<div class="info-label"><Phone /> Call Us:</div>
 							<div class="info-desc">We're available Mon-Fri, 9am-5pm.</div>
@@ -60,7 +60,7 @@ const metaKeywords = "";
 								</span>
 							</div>
 						</div> -->
-						<Separator className="my-4 md:my-6 lg:my-10 sm:mx-auto !w-2/3" />
+						<Separator class="my-4 md:my-6 lg:my-10 sm:mx-auto !w-2/3" />
 						<div class="info-row">
 							<div class="info-label"><MapPin /> Visit Us:</div>
 							<div class="info-desc">Drop by our office</div>

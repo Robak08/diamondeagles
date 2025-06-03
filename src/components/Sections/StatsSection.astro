@@ -1,5 +1,5 @@
 ---
-import { StatCard } from "@components/StatCard.tsx";
+import StatCard from "@components/StatCard.svelte";
 
 import { Flame, FileSearch, ChartNoAxesCombined } from "@lucide/astro";
 ---
@@ -12,7 +12,7 @@ import { Flame, FileSearch, ChartNoAxesCombined } from "@lucide/astro";
 			duration={3500}
 			client:visible={{ rootMargin: "60px" }}
 		>
-			<ChartNoAxesCombined size="32" slot="icon" />
+			<ChartNoAxesCombined size="32" />
 		</StatCard>
 	</div>
 	<div class="stats-card" title="293,482 customer ratings">
@@ -22,7 +22,7 @@ import { Flame, FileSearch, ChartNoAxesCombined } from "@lucide/astro";
 			duration={2800}
 			client:visible={{ rootMargin: "60px" }}
 		>
-			<Flame size="32" slot="icon" />
+			<Flame size="32" />
 		</StatCard>
 	</div>
 	<div class="stats-card" title="393,504 reviewed pages">
@@ -32,7 +32,7 @@ import { Flame, FileSearch, ChartNoAxesCombined } from "@lucide/astro";
 			duration={4200}
 			client:visible={{ rootMargin: "60px" }}
 		>
-			<FileSearch size="32" slot="icon" />
+			<FileSearch size="32" />
 		</StatCard>
 	</div>
 </section>

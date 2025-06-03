@@ -1,23 +1,29 @@
 ---
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
+import { Badge } from "$lib/components/ui/badge/index.js";
+import { Separator } from "$lib/components/ui/separator/index.js";
 
 import { ArrowRight, ArrowUpRight, TrendingUp } from "@lucide/astro";
 import { Picture } from "astro:assets";
 import heroImage from "@/assets/de_hero.png";
 import statueImage from "@/assets/de_statue_b.png";
-import background from '@/assets/de_hero_bg.png';
+import background from "@/assets/de_hero_bg.png";
 ---
 
 <section id="hero">
 	<!-- <div class="hero-bg"/> -->
-	<img id="background" src={background.src} alt="" fetchpriority="high" class="w-full h-full opacity-50 dark:opacity-[0.35] absolute inset-0 -z-1" />
+	<img
+		id="background"
+		src={background.src}
+		alt=""
+		fetchpriority="high"
+		class="w-full h-full opacity-50 dark:opacity-[0.35] absolute inset-0 -z-1"
+	/>
 	<div class="hero-content container">
 		<div
 			class="flex flex-col items-center gap-2 md:gap-3 lg:gap-4 text-center lg:items-start lg:text-left pb-8 md:pb-2"
 		>
-			<Badge variant="outline" className="select-none">
+			<Badge variant="outline" class="select-none">
 				<span class="-mt-1">👑</span> Local Leaders
 				<ArrowUpRight class="ml-2 size-4" />
 			</Badge>
@@ -43,9 +49,9 @@ import background from '@/assets/de_hero_bg.png';
 					<a href="/contact" title="Become Eagle"> Become an Eagle </a>
 				</Button>
 				<div class="flex items-center gap-3">
-					<Separator className="flex-1 !w-6" />
+					<Separator class="flex-1 !w-6" />
 					<span class="text-muted-foreground">or</span>
-					<Separator className="flex-1 !w-6" />
+					<Separator class="flex-1 !w-6" />
 				</div>
 				<Button variant="outline">
 					<a href="#about" title="About us">

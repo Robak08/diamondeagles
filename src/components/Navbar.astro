@@ -1,14 +1,26 @@
 ---
 import Logo from "./Logo.svelte";
-import { MenuBar } from "@components/MenuBar.tsx";
-import { MobileMenu } from "@components/MobileMenu.tsx";
+// import { MenuBar } from "@components/MenuBar.tsx";
+import MenuBar from "@components/MenuBar.svelte";
+import MobileMenu from "@components/MobileMenu.svelte";
 // import MobileNav from "@components/MobileNav.astro";
-import { ThemeToggle } from "@components/ThemeToggle.tsx";
+import ThemeToggle from "@components/ThemeToggle.svelte";
 import FacebookButton from "@components/Socials/FacebookButton.astro";
 import InstagramButton from "@components/Socials/InstagramButton.astro";
 // @ts-ignore
 const currentPath = Astro.url.pathname;
 import { navLinks, footerLinks } from "@lib/links";
+
+import { industries } from "$lib/industries.json";
+export const industriesArray = industries.map((item) => {
+	const itemObject = {
+		href: item.href,
+		label: item.label,
+		description: item.description,
+		svg: item.svg,
+	};
+	return itemObject;
+});
 
 let mobileLinks = navLinks.filter((link) => link.href !== "/industries");
 mobileLinks = [...mobileLinks, ...footerLinks];

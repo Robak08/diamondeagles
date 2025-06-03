@@ -14,18 +14,8 @@ export default defineConfig({
 		defaultStrategy: "hover",
 		prefetchAll: true,
 	},
-	// adapter: vercel({}),
-	adapter: vercel({
-		// webAnalytics: {
-		// 	enabled: true,
-		// },
-		// CHECK isr
-		// isr: true,
-		// imagesConfig: {
-		// 	sizes: [320, 640, 1280],
-		// },
-	}),
+	adapter: vercel({}),
 	vite: {
-		plugins: [tailwindcss()],
+		plugins: [tailwindcss({ applyBaseStyles: false })],
 	},
 });

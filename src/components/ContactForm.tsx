@@ -33,66 +33,14 @@ import {
 	PopoverTrigger,
 } from "@/components/ui/popover";
 
+import { statesArray } from "$lib/links";
+
 // CHECK PHONE VALIDATION
 
 /* TODO CHECKBOX
   I am a winner and I want to receive promotional materials
   I want to submit my company to the ranking
 */
-
-const states = [
-	"Alaska",
-	"Alabama",
-	"Arkansas",
-	"Arizona",
-	"California",
-	"Colorado",
-	"Connecticut",
-	"District of Columbia",
-	"Delaware",
-	"Florida",
-	"Georgia",
-	"Hawaii",
-	"Iowa",
-	"Idaho",
-	"Illinois",
-	"Indiana",
-	"Kansas",
-	"Kentucky",
-	"Louisiana",
-	"Massachusetts",
-	"Maryland",
-	"Maine",
-	"Michigan",
-	"Minnesota",
-	"Missouri",
-	"Mississippi",
-	"Montana",
-	"North Carolina",
-	"North Dakota",
-	"Nebraska",
-	"New Hampshire",
-	"New Jersey",
-	"New Mexico",
-	"Nevada",
-	"New York",
-	"Ohio",
-	"Oklahoma",
-	"Oregon",
-	"Pennsylvania",
-	"Rhode Island",
-	"South Carolina",
-	"South Dakota",
-	"Tennessee",
-	"Texas",
-	"Utah",
-	"Virginia",
-	"Vermont",
-	"Washington",
-	"Wisconsin",
-	"West Virginia",
-	"Wyoming",
-] as string[];
 
 const formSchema = z.object({
 	firstname: z.string().min(3, {
@@ -107,7 +55,7 @@ const formSchema = z.object({
 	city: z.string().min(3, {
 		message: "City must be at least 2 characters.",
 	}),
-	state: z.enum(states as [string, ...string[]], {
+	state: z.nullable(z.object({ id: z.string(), name: z.string() }), {
 		message: "Please select a state.",
 	}),
 	winner: z.boolean().optional(),
@@ -117,12 +65,7 @@ const formSchema = z.object({
 	}),
 });
 
-// TODO validation on city if checkboxes are checked -> otherwise optional
-
 export function ContactForm() {
-	const [open, setOpen] = React.useState(false);
-	const [selectedState, setSelectedState] = React.useState<State | null>(null);
-
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -130,7 +73,7 @@ export function ContactForm() {
 			phone: "",
 			company: "",
 			city: "",
-			state: "",
+			state: null,
 			winner: false,
 			submit: false,
 			message: "",
@@ -215,7 +158,9 @@ export function ContactForm() {
 												!field.value && "text-muted-foreground"
 											)}>
 											{field.value
-												? states.find((st) => st === field.value)
+												? statesArray.find(
+														(st) => field.value && st.id === field.value.id
+												  )?.name
 												: "Select state"}
 											<ChevronsUpDown className="opacity-50" />
 										</Button>
@@ -227,18 +172,18 @@ export function ContactForm() {
 										<CommandList>
 											<CommandEmpty>No state found.</CommandEmpty>
 											<CommandGroup>
-												{states.map((state) => (
+												{statesArray.map((state) => (
 													<CommandItem
-														value={state}
-														key={state.replaceAll(" ", "")}
+														value={state.id}
+														key={state.name.replaceAll(" ", "")}
 														onSelect={() => {
 															form.setValue("state", state);
 														}}>
-														{state}
+														{state.name}
 														<Check
 															className={cn(
 																"ml-auto",
-																state === field.value
+																field.value && state.id === field.value.id
 																	? "opacity-100"
 																	: "opacity-0"
 															)}

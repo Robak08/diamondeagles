@@ -4,7 +4,7 @@ const currentYear: String = new Date().getFullYear().toString();
 import FacebookButton from "@components/Socials/FacebookButton.astro";
 import InstagramButton from "@components/Socials/InstagramButton.astro";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@components/ui/separator";
+import { Separator } from "$lib/components/ui/separator/index.js";
 
 import { footerLinks } from "@lib/links";
 ---
@@ -16,8 +16,8 @@ import { footerLinks } from "@lib/links";
 			<span class="font-medium">US Business Ventures LLC</span>. All Rights
 			Reserved.
 		</span>
-		<Separator orientation="vertical" className="!h-8 hidden md:block" />
-		<Separator className="!w-3/5 mx-auto block md:hidden" />
+		<Separator orientation="vertical" class="!h-8 hidden md:block" />
+		<Separator class="!w-3/5 mx-auto block md:hidden" />
 		<ul class="footer-menu">
 			{
 				footerLinks.map((link) => (
@@ -29,8 +29,8 @@ import { footerLinks } from "@lib/links";
 				))
 			}
 		</ul>
-		<Separator orientation="vertical" className="!h-8 hidden md:block" />
-		<Separator className="!w-3/5 mx-auto block md:hidden" />
+		<Separator orientation="vertical" class="!h-8 hidden md:block" />
+		<Separator class="!w-3/5 mx-auto block md:hidden" />
 		<ul class="footer-socials">
 			<li>
 				<InstagramButton />

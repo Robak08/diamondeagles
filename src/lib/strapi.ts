@@ -1,7 +1,4 @@
 import { strapi } from '@strapi/client';
-
-console.log(import.meta.env.PUBLIC_CMS_API_URL, import.meta.env.PUBLIC_CMS_API_TOKEN)
-
 const client = strapi({ baseURL: import.meta.env.PUBLIC_CMS_API_URL, auth: import.meta.env.PUBLIC_CMS_API_TOKEN, });
 
 // Kategorie: https://strapi.diamondeaglesusa.com/api/company_categories
